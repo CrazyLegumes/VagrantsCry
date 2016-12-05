@@ -6,7 +6,7 @@ public class Player
     private string pname = "Aurelia Roviere";
     private BaseStats stats = new BaseStats();
 
-    
+
 
     public string Name
     {
@@ -19,6 +19,29 @@ public class Player
     }
 
 
+
+    public void CheckLevelUp()
+    {
+        if (Stats.Experience < Stats.MaxExperience)
+            return;
+
+        Debug.Log("Level up!");
+        int bonus = Stats.Experience - Stats.MaxExperience;
+        Stats.Experience = bonus;
+        Stats.Level++;
+        Stats.MaxHealth += Stats.Level * 5;
+        Stats.Strength += (int)(Stats.Level * 1.5);
+        Stats.Defense += (int)(Stats.Level * 1.3);
+        Stats.Speed += (int)(Stats.Speed * 1.5);
+        Stats.MaxMana += Stats.Level * 3;
+        Stats.Luck += Random.Range(1, 4);
+
+    }
+
+    public void AddExperience(int exp)
+    {
+        Stats.Experience += exp;
+    }
 
     public void DamageMe(int damage)
     {

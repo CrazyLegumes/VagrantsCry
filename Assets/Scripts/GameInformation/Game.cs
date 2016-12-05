@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
 
 public enum GameState
@@ -38,6 +39,12 @@ public class Game
             return instance;
         }
     }
+
+    public static void LoadScene(int scene)
+    {
+        SceneManager.LoadScene(scene);
+    }
+
 
     public  string PlayerName { get; set; }
     public  int PlayerLevel { get; set; }

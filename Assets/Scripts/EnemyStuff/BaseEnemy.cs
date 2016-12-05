@@ -15,6 +15,7 @@ public class BaseEnemy{
         {
             return ename;
         }
+        set { ename = value; }
     }
 
     public BaseStats Stats

@@ -9,6 +9,7 @@ public class BasicMob : MonoBehaviour {
 	void Start () {
 
         me = new BaseEnemy();
+        me.Name = "Mobu";
         
         me.Stats.Level = 1;
         me.Stats.Health = 10;
