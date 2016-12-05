@@ -13,15 +13,7 @@ public enum GameState
     InBattle,
     GameOver,
     Credits
-    
 
-
-
-
-
-    
-    
-    
 }
 
 

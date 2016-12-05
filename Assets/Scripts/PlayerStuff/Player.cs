@@ -19,4 +19,20 @@ public class Player
     }
 
 
+
+    public void DamageMe(int damage)
+    {
+        Stats.Health -= damage;
+        if (Stats.Health < 0)
+            Stats.Health = 0;
+    }
+
+    public void HealMe(int heal)
+    {
+        Stats.Health += heal;
+        if (Stats.Health > Stats.MaxHealth)
+            Stats.Health = Stats.MaxHealth;
+    }
+
+
 }
