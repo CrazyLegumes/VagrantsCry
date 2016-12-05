@@ -6,14 +6,14 @@ public class Inputs {
     public static float HorizontalAxis()
     {
         float r = 0.0f;
-        r += Input.GetAxis("J_Horizontal");
+        //r += Input.GetAxis("J_Horizontal");
         r += Input.GetAxis("K_Horizontal");
         return Mathf.Clamp(r, -1f, 1f);
     }
     public static float VerticalAxis()
     {
         float r = 0.0f;
-        r += Input.GetAxis("J_Vertical");
+        //r += Input.GetAxis("J_Vertical");
         r += Input.GetAxis("K_Vertical");
         return Mathf.Clamp(r, -1f, 1f);
     }
