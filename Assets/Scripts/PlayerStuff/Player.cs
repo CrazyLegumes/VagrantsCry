@@ -3,8 +3,26 @@ using System.Collections;
 [System.Serializable]
 public class Player
 {
-    private string pname = "Aurelia Roviere";
-    private BaseStats stats = new BaseStats();
+    private static Player instance;
+    private string pname;
+    private BaseStats stats;
+
+    public static Player Instance
+    {
+        get
+        {
+            if (instance == null)
+                instance = new Player();
+            return instance;
+        }
+    }
+    
+
+    private Player()
+    {
+        pname = "Aurelia Roviere";
+        stats = new BaseStats();
+    }
 
 
 
