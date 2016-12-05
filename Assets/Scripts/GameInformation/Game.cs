@@ -5,18 +5,22 @@ using System.Collections;
 public enum GameState
 {
 
-    /*Game states that I want
-    Pause
-    InWorld
-    InBattle
-    InDialogue
+    
+    //Game states that I want
+    MainMenu,
+    Pause,
+    InWorld,
+    InBattle,
+    GameOver,
+    Credits
+    
 
 
 
 
 
     
-    */
+    
     
 }
 
