@@ -40,7 +40,7 @@ public class MainMenuUI : MonoBehaviour {
     {
         select = GetComponent<AudioSource>();
         select.clip = selectclip;
-        Title.text = "A Vagrants Cry";
+        Title.text = "A Vagrant's Cry";
         StartGame.text = "Start";
         Exit.text = "Exit";
         Title.color = Color.clear;
