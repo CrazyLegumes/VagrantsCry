@@ -3,6 +3,11 @@ using System.Collections;
 
 public class Inputs {   
 
+
+    public static bool Pause()
+    {
+        return Input.GetButtonDown("Start");
+    }
     public static float HorizontalAxis()
     {
         float r = 0.0f;

@@ -1,29 +1,39 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-
+[System.Serializable]
+class PlayerSettings
+{
+    public CharacterController body;
+    public bool canmove;
+    public Vector3 inp = Vector3.zero;
+    public const float gravity = 30f;
+    public float movespeed = 5f;
+    public float jumpheight = 10f;
+}
 
 
 public class Controls : MonoBehaviour
 {
-
-    private CharacterController body;
-    private bool canmove;
-    private Vector3 inp = Vector3.zero;
-    private const float gravity = 30f;
-
-
     [SerializeField]
-    private float movespeed;
+    PlayerSettings settings;
 
-    [SerializeField]
-    private float jumpheight;
+
 
     // Use this for initialization
     void Start()
     {
-        canmove = true;
-        body = GetComponent<CharacterController>();
+        Game.Instance.state = GameState.InWorld;
+        switch (Game.Instance.state)
+        {
+            case GameState.InWorld:
+                settings = new PlayerSettings();
+                settings.body = GameObject.Find("Player").GetComponent<CharacterController>();
+                settings.canmove = true;
+                break;
+        }
+
+
 
     }
 
@@ -33,43 +43,75 @@ public class Controls : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Movement();
+        Debug.Log(Game.Instance.state);
+
+        if (/*body.isGrounded &&*/ Inputs.Pause())
+        {
+            Pause();
+        }
+
+        switch (Game.Instance.state)
+        {
+            case GameState.InWorld:
+                Movement();
+                break;
+
+            case GameState.InBattle:
+                break;
+        }
+
 
 
 
     }
 
+    private void Pause()
+    {
+
+        if (Game.Instance.state == GameState.InWorld)
+        {
+            Game.Instance.state = GameState.Pause;
+            Time.timeScale = 0f;
+        }
+        else
+        {
+            Game.Instance.state = GameState.InWorld;
+            Time.timeScale = 1f;
+        }
+    }
+
 
     private void Movement()
     {
-        if (canmove)
+        if (settings.canmove)
         {
-            
-            inp.x = Inputs.HorizontalAxis();
-            inp.z = Inputs.VerticalAxis();
-            inp.x *= movespeed;
-            inp.z *= movespeed;
 
-            if (body.isGrounded)
+            settings.inp.x = Inputs.HorizontalAxis();
+            settings.inp.z = Inputs.VerticalAxis();
+            settings.inp.x *= settings.movespeed;
+            settings.inp.z *= settings.movespeed;
+
+            if (settings.body.isGrounded)
             {
-                inp.x = Inputs.HorizontalAxis();
-                inp.z = Inputs.VerticalAxis();
+                settings.inp.x = Inputs.HorizontalAxis();
+                settings.inp.z = Inputs.VerticalAxis();
+                settings.inp.y = 0;
 
 
-                inp = transform.TransformDirection(inp);
+                settings.inp = transform.TransformDirection(settings.inp);
 
-                inp.x *= movespeed;
-                inp.z *= movespeed;
+                settings.inp.x *= settings.movespeed;
+                settings.inp.z *= settings.movespeed;
 
 
                 if (Inputs.B_Button())
                 {
-                    inp.y = jumpheight;
+                    settings.inp.y = settings.jumpheight;
                 }
             }
 
-            inp.y -= gravity * Time.deltaTime;
-            body.Move(inp * Time.deltaTime);
+            settings.inp.y -= PlayerSettings.gravity * Time.deltaTime;
+            settings.body.Move(settings.inp * Time.deltaTime);
         }
     }
 
