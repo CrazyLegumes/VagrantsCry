@@ -24,6 +24,27 @@ public class Inputs {
     }
 
 
+    public static bool MenuUp()
+    {
+        return Input.GetButtonDown("MenuUp");
+    }
+
+    public static bool MenuDown()
+    {
+        return Input.GetButtonDown("MenuDown");
+    }
+
+    public static bool MenuRight()
+    {
+        return Input.GetButtonDown("MenuRight");
+    }
+
+    public static bool MenuLeft()
+    {
+        return Input.GetButtonDown("MenuLeft");
+    }
+
+
     public static bool A_Button()
     {
         return Input.GetButtonDown("A_Button");

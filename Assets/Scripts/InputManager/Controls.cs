@@ -23,6 +23,7 @@ public class Controls : MonoBehaviour
 {
     [SerializeField]
     PlayerSettings settings;
+    MainMenuUI mainmenu;
 
 
 
@@ -43,6 +44,11 @@ public class Controls : MonoBehaviour
                 settings.body = GameObject.Find("Player").GetComponent<CharacterController>();
                 settings.canmove = true;
                 break;
+
+            case GameState.MainMenu:
+                mainmenu = FindObjectOfType<MainMenuUI>();
+                break;
+                
         }
 
 
@@ -69,6 +75,9 @@ public class Controls : MonoBehaviour
         switch (Game.Instance.state)
         {
 
+            case GameState.MainMenu:
+                MenuControls();
+                break;
 
             case GameState.InWorld:
                 Movement();
@@ -130,6 +139,31 @@ public class Controls : MonoBehaviour
 
             settings.inp.y -= PlayerSettings.gravity * Time.deltaTime;
             settings.body.Move(settings.inp * Time.deltaTime);
+        }
+    }
+
+
+    private void MenuControls()
+    {
+        if (mainmenu.CanSelect)
+        {
+            if (Inputs.MenuUp())
+            {
+                mainmenu.selection--;
+                if (mainmenu.selection < 0)
+                    mainmenu.selection = 1;
+            }
+
+            if (Inputs.MenuDown())
+            {
+                mainmenu.selection++;
+                if (mainmenu.selection > 1)
+                    mainmenu.selection = 0;
+            }
+
+            mainmenu.cursor.rectTransform.localPosition = new Vector3(-53, -50 * mainmenu.selection, 0);
+            
+
         }
     }
 

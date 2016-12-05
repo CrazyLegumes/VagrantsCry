@@ -12,7 +12,22 @@ public class MainMenuUI : MonoBehaviour {
     private Text Exit;
 
     [SerializeField]
-    private Image cursor;
+    public Image cursor;
+
+    private bool canselect;
+    public bool CanSelect
+    {
+        get
+        {
+            return canselect;
+        }
+
+        set
+        {
+            canselect = value;
+        }
+    }
+    public int selection = 0;
 
 
     void Awake()
@@ -24,6 +39,10 @@ public class MainMenuUI : MonoBehaviour {
         StartGame.color = Color.clear;
         Exit.color = Color.clear;
         cursor.enabled = false;
+        canselect = false;
+
+        
+       
     }
 	// Use this for initialization
 	void Start () {
@@ -40,6 +59,7 @@ public class MainMenuUI : MonoBehaviour {
         Exit.DOColor(Color.white, 3);
         yield return new WaitForSeconds(2);
         cursor.enabled = true;
+        canselect = true;
         yield break;
 
         
