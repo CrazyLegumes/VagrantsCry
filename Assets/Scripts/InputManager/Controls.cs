@@ -11,6 +11,8 @@ class PlayerSettings
     public const float gravity = 30f;
     public float movespeed = 5f;
     public float jumpheight = 10f;
+
+    
 }
 
 
