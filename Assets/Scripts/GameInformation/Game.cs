@@ -41,9 +41,10 @@ public class Game
         }
     }
 
-    public static void LoadScene(int scene)
+    public static void LoadScene(int scene, LoadSceneMode mode = LoadSceneMode.Single)
     {
-        SceneManager.LoadScene(scene);
+       
+        SceneManager.LoadScene(scene,mode);
     }
 
 

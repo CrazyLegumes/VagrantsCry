@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
 [System.Serializable]
 class PlayerSettings
@@ -13,6 +14,9 @@ class PlayerSettings
 }
 
 
+
+
+
 public class Controls : MonoBehaviour
 {
     [SerializeField]
@@ -20,12 +24,18 @@ public class Controls : MonoBehaviour
 
 
 
-    // Use this for initialization
+    void Awake()
+    {
+        DontDestroyOnLoad(transform.gameObject);
+        Game.Instance.state = GameState.MainMenu;
+    }
     void Start()
     {
-        Game.Instance.state = GameState.InWorld;
+        
+       
         switch (Game.Instance.state)
         {
+
             case GameState.InWorld:
                 settings = new PlayerSettings();
                 settings.body = GameObject.Find("Player").GetComponent<CharacterController>();
@@ -45,13 +55,19 @@ public class Controls : MonoBehaviour
     {
         Debug.Log(Game.Instance.state);
 
-        if (/*body.isGrounded &&*/ Inputs.Pause())
-        {
-            Pause();
-        }
 
+        if (settings.body != null)
+        {
+            if (settings.body.isGrounded && Inputs.Pause())
+            {
+                Pause();
+            }
+            
+        }
         switch (Game.Instance.state)
         {
+
+
             case GameState.InWorld:
                 Movement();
                 break;
