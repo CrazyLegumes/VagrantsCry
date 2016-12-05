@@ -37,11 +37,7 @@ public class CreateChar : MonoBehaviour
 
     void Update()
     {
-        if (Inputs.A_Button())
-        {
-            Debug.Log("Killem");
-           
-        }
+        
     }
 
 

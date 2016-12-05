@@ -12,7 +12,7 @@ class PlayerSettings
     public float movespeed = 5f;
     public float jumpheight = 10f;
 
-    
+
 }
 
 
@@ -32,14 +32,15 @@ public class Controls : MonoBehaviour
         DontDestroyOnLoad(transform.gameObject);
         Game.Instance.state = GameState.MainMenu;
     }
-    void Start()
+
+
+    void Init()
     {
-        
-       
         switch (Game.Instance.state)
         {
 
             case GameState.InWorld:
+                
                 settings = new PlayerSettings();
                 settings.body = GameObject.Find("Player").GetComponent<CharacterController>();
                 settings.canmove = true;
@@ -48,10 +49,12 @@ public class Controls : MonoBehaviour
             case GameState.MainMenu:
                 mainmenu = FindObjectOfType<MainMenuUI>();
                 break;
-                
+
         }
-
-
+    }
+    void Start()
+    {
+        Init();
 
     }
 
@@ -70,7 +73,7 @@ public class Controls : MonoBehaviour
             {
                 Pause();
             }
-            
+
         }
         switch (Game.Instance.state)
         {
@@ -110,6 +113,7 @@ public class Controls : MonoBehaviour
 
     private void Movement()
     {
+
         if (settings.canmove)
         {
 
@@ -162,10 +166,37 @@ public class Controls : MonoBehaviour
             }
 
             mainmenu.cursor.rectTransform.localPosition = new Vector3(-53, -50 * mainmenu.selection, 0);
-            
+
+
+            if (Inputs.A_Button())
+            {
+                switch (mainmenu.selection)
+                {
+                    case 0:
+                        StartCoroutine(Game.LoadScene(1));
+                        SceneManager.sceneLoaded += SceneManager_sceneLoaded;
+                        
+                        Game.Instance.state = GameState.InWorld;
+                        break;
+
+                    case 1:
+                        Application.Quit();
+                        break;
+                }
+            }
+
+
+
+
+
+
 
         }
     }
 
+    private void SceneManager_sceneLoaded(Scene arg0, LoadSceneMode arg1)
+    {
+        Init();
+    }
 }
 

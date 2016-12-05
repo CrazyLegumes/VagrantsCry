@@ -41,10 +41,23 @@ public class Game
         }
     }
 
-    public static void LoadScene(int scene, LoadSceneMode mode = LoadSceneMode.Single)
+    public static IEnumerator LoadScene(int scene, LoadSceneMode mode = LoadSceneMode.Single)
     {
-       
-        SceneManager.LoadScene(scene,mode);
+        yield return new WaitForSeconds(.1f);
+        SceneManager.LoadSceneAsync(scene, mode);
+        
+    }
+
+    public static IEnumerator SetActiveScene(Scene scene)
+    {
+        yield return new WaitForSeconds(.3f);
+        SceneManager.SetActiveScene(scene);
+    }
+
+    public static IEnumerator UnloadScene(int scene)
+    {
+        yield return new WaitForSeconds(.1f);
+        SceneManager.UnloadScene(scene);
     }
 
 
