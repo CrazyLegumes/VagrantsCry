@@ -40,7 +40,7 @@ public class Controls : MonoBehaviour
         {
 
             case GameState.InWorld:
-                
+
                 settings = new PlayerSettings();
                 settings.body = GameObject.Find("Player").GetComponent<CharacterController>();
                 settings.canmove = true;
@@ -156,6 +156,7 @@ public class Controls : MonoBehaviour
                 mainmenu.selection--;
                 if (mainmenu.selection < 0)
                     mainmenu.selection = 1;
+                mainmenu.select.Play();
             }
 
             if (Inputs.MenuDown())
@@ -163,6 +164,7 @@ public class Controls : MonoBehaviour
                 mainmenu.selection++;
                 if (mainmenu.selection > 1)
                     mainmenu.selection = 0;
+                mainmenu.select.Play();
             }
 
             mainmenu.cursor.rectTransform.localPosition = new Vector3(-53, -50 * mainmenu.selection, 0);
@@ -173,10 +175,11 @@ public class Controls : MonoBehaviour
                 switch (mainmenu.selection)
                 {
                     case 0:
-                        StartCoroutine(Game.LoadScene(1));
+
+                        StartCoroutine(mainmenu.FadeOutTitle());
                         SceneManager.sceneLoaded += SceneManager_sceneLoaded;
-                        
                         Game.Instance.state = GameState.InWorld;
+                        mainmenu.select.Play();
                         break;
 
                     case 1:

@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 using DG.Tweening;
 
 public class MainMenuUI : MonoBehaviour {
@@ -10,6 +11,11 @@ public class MainMenuUI : MonoBehaviour {
     private Text StartGame;
     [SerializeField]
     private Text Exit;
+
+    [SerializeField]
+    private AudioClip selectclip;
+
+    public AudioSource select;
 
     [SerializeField]
     public Image cursor;
@@ -32,6 +38,8 @@ public class MainMenuUI : MonoBehaviour {
 
     void Awake()
     {
+        select = GetComponent<AudioSource>();
+        select.clip = selectclip;
         Title.text = "A Vagrants Cry";
         StartGame.text = "Start";
         Exit.text = "Exit";
@@ -63,6 +71,19 @@ public class MainMenuUI : MonoBehaviour {
         yield break;
 
         
+    }
+
+    public IEnumerator FadeOutTitle()
+    {
+        Title.DOColor(Color.clear, 2);
+        StartGame.DOColor(Color.clear, 2);
+        Exit.DOColor(Color.clear, 2);
+        cursor.DOColor(Color.clear, 2);
+        yield return new WaitForSeconds(2f);
+        Camera.main.GetComponent<AudioListener>().enabled = false;
+        yield return StartCoroutine(Game.LoadScene(1, LoadSceneMode.Additive));
+        yield return new WaitForEndOfFrame();
+        StartCoroutine(Game.UnloadScene(0));
     }
 	
 	// Update is called once per frame

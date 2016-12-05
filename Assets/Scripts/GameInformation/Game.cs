@@ -43,6 +43,7 @@ public class Game
 
     public static IEnumerator LoadScene(int scene, LoadSceneMode mode = LoadSceneMode.Single)
     {
+       
         yield return new WaitForSeconds(.1f);
         SceneManager.LoadSceneAsync(scene, mode);
         
