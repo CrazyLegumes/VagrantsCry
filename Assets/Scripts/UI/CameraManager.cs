@@ -1,45 +1,47 @@
 ﻿using UnityEngine;
 using System.Collections;
-using UnityEngine.SceneManagement;
 
 public class CameraManager : MonoBehaviour
 {
-
-    Transform target;
-    bool following;
-    float xpos, ypos; //Standsfor how far extra the camera is behind or in front;
-    Vector3 veloc;
-
+    private bool isFollowing;
+    private Transform target;
+    private Vector3 pos;
+    private Quaternion rotation;
+    private float height, distance, xRotation;
+    private Vector3 veloc;
 
 
 
     void Init()
     {
-        following = true;
         target = GameObject.Find("Player").transform;
-
+        isFollowing = true;
+        height = 4;
+        distance = 10;
+        xRotation = 45;
     }
-    // Use this for initialization
     void Start()
     {
-        if (Game.Instance.state == GameState.InWorld)
+        Init();
+    }
+
+    void LateUpdate()
+    {
+        switch (Game.Instance.state)
         {
-            Init();
-            transform.LookAt(target);
+            case GameState.InWorld:
+                WorldCamera();
+                break;
         }
         
+
     }
 
-    // Update is called once per frame
-    void Update()
+    void WorldCamera()
     {
-
-        if (Game.Instance.state == GameState.InWorld && target != null)
-        {
-            ;
-            transform.position = Vector3.SmoothDamp(transform.position, new Vector3(target.position.x, target.position.z, transform.position.y), ref veloc, .5f);
-        }
+        rotation = Quaternion.Euler(xRotation, 0, 0);
+        pos = rotation * new Vector3(0, height, -distance) + target.position + new Vector3(0, 0, -6);
+        if (isFollowing)
+            transform.position = Vector3.SmoothDamp(transform.position, pos, ref veloc, .2f);
     }
-
-    
 }
