@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class BasicMob : MonoBehaviour {
+public class BasicMob : BaseEnemy {
 
     [SerializeField]
     private BaseEnemy me;
@@ -10,12 +10,12 @@ public class BasicMob : MonoBehaviour {
 
 
 	// Use this for initialization
-	void Start () {
+	void Awake () {
 
-        me = new BaseEnemy();
+        me = GetComponent<BasicMob>();
         me.Name = "Mobu";
-        
-        
+
+        me.ID = 1001;
         me.Stats.Level = 1;
         me.Stats.Health = 10;
         me.Stats.MaxHealth = 10;

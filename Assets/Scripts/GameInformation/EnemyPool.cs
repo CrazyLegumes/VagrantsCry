@@ -5,12 +5,14 @@ using UnityEngine.SceneManagement;
 
 public class EnemyPool : MonoBehaviour {
 
+    public static EnemyPool current;
 
     private int enemiestopool = 5;
     [SerializeField]
     private List<GameObject> EnemyTypes = new List<GameObject>();
 
     public List<GameObject> enemyPool;
+    GameObject emptyparent;
 
     private bool previouslypooled;
 
@@ -18,18 +20,23 @@ public class EnemyPool : MonoBehaviour {
     void Awake()
     {
         DontDestroyOnLoad(transform.gameObject);
+        current = this;
     }
 
     void Init()
     {
         enemyPool = new List<GameObject>();
-        GameObject emptyparent = Instantiate(new GameObject());
+
+        emptyparent = Instantiate(new GameObject());
+        emptyparent.name = "EnemyPool";
+
         for (int i = 0; i < EnemyTypes.Count; i++)
         {
             Debug.Log("Faggot");
             for (int j = 0; j < enemiestopool; j++)
             {
                 GameObject obj = Instantiate(EnemyTypes[i]);
+                obj.name = obj.GetComponent<BaseEnemy>().Name;
                 obj.SetActive(false);
                 obj.transform.parent = emptyparent.transform;
                 enemyPool.Add(obj);
@@ -47,6 +54,23 @@ public class EnemyPool : MonoBehaviour {
 
 
     }
+
+    public GameObject GetEnemies(int enemyID)
+    {
+        for(int i = 0; i < enemyPool.Count; i++)
+        {
+            Debug.Log(enemyPool[i].GetComponent<BaseEnemy>().ID);
+            Debug.Log(enemyID);
+            if (!enemyPool[i].activeInHierarchy && enemyPool[i].GetComponent<BaseEnemy>().ID == enemyID)
+            {
+                return enemyPool[i];
+            }
+        }
+        return null;
+
+
+    }
+
 	
 	// Update is called once per frame
 	void Update () {
@@ -55,13 +79,7 @@ public class EnemyPool : MonoBehaviour {
             Init();
         }
         
-        SceneManager.sceneLoaded += SceneManager_sceneLoaded;
-	}
-
-    private void SceneManager_sceneLoaded(Scene arg0, LoadSceneMode arg1)
-    {
-        Debug.Log("Reinitialized");
-        previouslypooled = false;
-        Init();
     }
+
+    
 }

@@ -3,13 +3,17 @@ using System.Collections;
 using System.Collections.Generic;
 
 [System.Serializable]
-public class BaseEnemy
+public class BaseEnemy : MonoBehaviour
 {
     private string ename;
+    [SerializeField]
+    private int id;
 
     [System.NonSerialized]
     private BaseStats stats = new BaseStats();
-    
+
+
+
     private int expgiven;
 
     [SerializeField]
@@ -20,7 +24,18 @@ public class BaseEnemy
     public BaseEnemy()
     {
 
-        
+    }
+
+    public int ID
+    {
+        get
+        {
+            return id;
+        }
+        set
+        {
+            id = value;
+        }
     }
 
     public List<GameObject> Mobs
@@ -29,7 +44,7 @@ public class BaseEnemy
         {
             return mobs;
         }
-        
+
     }
 
     public string Name
@@ -48,7 +63,7 @@ public class BaseEnemy
             return stats;
         }
     }
-    
+
     public int EXPGiven
     {
         get { return expgiven; }

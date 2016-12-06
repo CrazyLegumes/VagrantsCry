@@ -24,6 +24,9 @@ public class Controls : MonoBehaviour
     [SerializeField]
     PlayerSettings settings;
     MainMenuUI mainmenu;
+    Battle battlesys;
+    [SerializeField]
+    BasicMob mob;
 
 
 
@@ -44,6 +47,8 @@ public class Controls : MonoBehaviour
                 settings = new PlayerSettings();
                 settings.body = GameObject.Find("Player").GetComponent<CharacterController>();
                 settings.canmove = true;
+                mob = GameObject.Find("Basic Man").GetComponent<BasicMob>();
+                battlesys = FindObjectOfType<Battle>();
                 break;
 
             case GameState.MainMenu:
@@ -83,6 +88,11 @@ public class Controls : MonoBehaviour
                 break;
 
             case GameState.InWorld:
+                if (Inputs.A_Button())
+                {
+                    Game.Instance.state = GameState.InBattle;
+                    StartCoroutine(battlesys.Setup(mob.gameObject));
+                }
                 Movement();
                 break;
 

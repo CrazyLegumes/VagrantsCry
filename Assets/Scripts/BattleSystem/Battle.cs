@@ -6,6 +6,7 @@ using System.Collections.Generic;
 
 public enum battleState
 {
+    init,
     selectmove,
     selecttarget,
     check,
@@ -15,50 +16,56 @@ public enum battleState
 }
 
 
-class Spawn
+
+
+public class Battle : MonoBehaviour
 {
-    public Transform Spawnpoint;
-}
+    [SerializeField]
+    private List<Transform> enemyspawn = new List<Transform>();
 
-public class Battle : MonoBehaviour {
+    [SerializeField]
+    private Transform playerspawn;
 
-    List<Transform>  enemyspawn = new List<Transform>();
-    Transform playerspawn;
-
+    [SerializeField]
     List<GameObject> enemies = new List<GameObject>();
 
     public battleState state;
 
 
-    IEnumerator Setup(List<GameObject> enemymobs)
+    public IEnumerator Setup(GameObject enemy)
     {
+        List<GameObject> enemymobs = enemy.GetComponent<BaseEnemy>().Mobs;
+        enemy.SetActive(false);
         Save.SaveAllFiles();
-        for(int i = 0; i < enemymobs.Count; i++)
+        for (int i = 0; i < enemymobs.Count; i++)
         {
-            enemies.Add(enemymobs[i]);
-            enemymobs[i].transform.position = enemyspawn[i].position;
+
+            enemies.Add(EnemyPool.current.GetEnemies(enemymobs[i].GetComponent<BaseEnemy>().ID));
+            enemies[i].transform.position = enemyspawn[i].position;
+            enemies[i].SetActive(true);
+
+
         }
 
 
 
         GameObject.Find("Player").transform.position = playerspawn.position;
-        
-
-
-
-
         yield return null;
     }
-	// Use this for initialization
-	void Start () {
-        
+    // Use this for initialization
+    void Start()
+    {
+        state = battleState.init;
 
 
-        
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
+
+
+
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+
+    }
 }
