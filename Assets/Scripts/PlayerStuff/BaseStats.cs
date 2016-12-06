@@ -1,7 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-[System.Serializable]
 public class BaseStats
 {
     //Stats Needed
@@ -13,7 +12,6 @@ public class BaseStats
     //Luck
     //Experience
     //Level
-
 
     private int strength;
     private int level;

@@ -2,7 +2,11 @@
 using System.Collections;
 
 public class BasicMob : MonoBehaviour {
+
+    [SerializeField]
     private BaseEnemy me;
+
+
 
 
 	// Use this for initialization
@@ -10,6 +14,7 @@ public class BasicMob : MonoBehaviour {
 
         me = new BaseEnemy();
         me.Name = "Mobu";
+        
         
         me.Stats.Level = 1;
         me.Stats.Health = 10;
