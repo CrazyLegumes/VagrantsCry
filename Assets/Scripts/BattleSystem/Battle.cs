@@ -36,7 +36,7 @@ public class Battle : MonoBehaviour
     {
         List<GameObject> enemymobs = enemy.GetComponent<BaseEnemy>().Mobs;
         enemy.SetActive(false);
-        Save.SaveAllFiles();
+        CreateChar.StorePlayerInfo();
         
         for (int i = 0; i < enemymobs.Count; i++)
         {

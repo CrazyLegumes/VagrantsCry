@@ -1,14 +1,13 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class CreateChar : MonoBehaviour
+public class CreateChar
 {
 
-    void Start()
+
+
+    public static void Init()
     {
-
-        
-
         Player.Instance.Stats.Level = 1;
         Player.Instance.Stats.Health = 100;
         Player.Instance.Stats.MaxHealth = 100;
@@ -21,18 +20,7 @@ public class CreateChar : MonoBehaviour
         Player.Instance.Stats.Experience = 0;
         Player.Instance.Stats.MaxExperience = 10;
         StorePlayerInfo();
-
-
-
-
-
         Save.SaveAllFiles();
-
-        
-
-
-
-
     }
 
     void Update()
@@ -41,7 +29,7 @@ public class CreateChar : MonoBehaviour
     }
 
 
-    private void StorePlayerInfo()
+    public static void StorePlayerInfo()
     {
         
         Game.Instance.PlayerLevel = Player.Instance.Stats.Level;

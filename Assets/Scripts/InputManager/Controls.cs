@@ -187,6 +187,7 @@ public class Controls : MonoBehaviour
                     case 0:
 
                         StartCoroutine(mainmenu.FadeOutTitle());
+                        CreateChar.Init();
                         SceneManager.sceneLoaded += SceneManager_sceneLoaded;
                         Game.Instance.state = GameState.InWorld;
                         mainmenu.select.Play();
