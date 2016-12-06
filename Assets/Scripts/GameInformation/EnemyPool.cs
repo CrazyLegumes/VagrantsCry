@@ -32,7 +32,7 @@ public class EnemyPool : MonoBehaviour {
 
         for (int i = 0; i < EnemyTypes.Count; i++)
         {
-            Debug.Log("Faggot");
+            
             for (int j = 0; j < enemiestopool; j++)
             {
                 GameObject obj = Instantiate(EnemyTypes[i]);
@@ -59,8 +59,7 @@ public class EnemyPool : MonoBehaviour {
     {
         for(int i = 0; i < enemyPool.Count; i++)
         {
-            Debug.Log(enemyPool[i].GetComponent<BaseEnemy>().ID);
-            Debug.Log(enemyID);
+            
             if (!enemyPool[i].activeInHierarchy && enemyPool[i].GetComponent<BaseEnemy>().ID == enemyID)
             {
                 return enemyPool[i];
