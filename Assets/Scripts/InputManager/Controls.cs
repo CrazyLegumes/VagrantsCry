@@ -29,6 +29,11 @@ public class Controls : MonoBehaviour
     BasicMob mob;
 
 
+    public void InitBattle(GameObject en)
+    {
+        Game.Instance.state = GameState.InBattle;
+        StartCoroutine(battlesys.Setup(en));
+    }
 
     void Awake()
     {
@@ -88,11 +93,6 @@ public class Controls : MonoBehaviour
                 break;
 
             case GameState.InWorld:
-                if (Inputs.A_Button())
-                {
-                    Game.Instance.state = GameState.InBattle;
-                    StartCoroutine(battlesys.Setup(mob.gameObject));
-                }
                 Movement();
                 break;
 

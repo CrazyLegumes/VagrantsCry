@@ -8,7 +8,12 @@ public class BasicMob : BaseEnemy {
 
 
 
+    void OnTriggerEnter(Collider col)
+    {
+        if (col.gameObject.tag == "Player")
+            FindObjectOfType<Controls>().InitBattle(transform.gameObject);
 
+    }
 	// Use this for initialization
 	void Awake () {
 

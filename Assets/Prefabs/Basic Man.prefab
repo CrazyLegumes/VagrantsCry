@@ -25,7 +25,7 @@ GameObject:
   - 114: {fileID: 114000012505192898}
   m_Layer: 0
   m_Name: Basic Man
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -91,7 +91,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   id: 1001
-  mobs: []
+  mobs:
+  - {fileID: 1000010693431660}
+  - {fileID: 1000010693431660}
+  - {fileID: 1000010693431660}
   me: {fileID: 0}
 --- !u!135 &135000010434510158
 SphereCollider:
