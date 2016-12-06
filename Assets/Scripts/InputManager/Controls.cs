@@ -159,6 +159,10 @@ public class Controls : MonoBehaviour
 
     private void MenuControls()
     {
+        if (!mainmenu.CanSelect && Inputs.A_Button())
+        {
+            StartCoroutine(mainmenu.Skip());
+        }
         if (mainmenu.CanSelect)
         {
             if (Inputs.MenuUp())

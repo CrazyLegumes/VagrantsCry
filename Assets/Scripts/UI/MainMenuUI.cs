@@ -4,7 +4,8 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using DG.Tweening;
 
-public class MainMenuUI : MonoBehaviour {
+public class MainMenuUI : MonoBehaviour
+{
     [SerializeField]
     private Text Title;
     [SerializeField]
@@ -49,28 +50,47 @@ public class MainMenuUI : MonoBehaviour {
         cursor.enabled = false;
         canselect = false;
 
-        
-       
+
+
     }
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    void Start()
+    {
 
         StartCoroutine(FadeInTitle());
-	}
+    }
 
     IEnumerator FadeInTitle()
     {
+
+
         Title.DOColor(Color.white, 3);
         yield return new WaitForSeconds(1.5f);
         StartGame.DOColor(Color.white, 3);
         yield return new WaitForSeconds(.5f);
         Exit.DOColor(Color.white, 3);
+
         yield return new WaitForSeconds(2);
         cursor.enabled = true;
         canselect = true;
         yield break;
 
-        
+    }
+
+    public IEnumerator Skip()
+    {
+        StopAllCoroutines();
+        DOTween.KillAll();
+        Title.color = Color.white;
+        Debug.Log("Yas");
+        Title.color = Color.white;
+        StartGame.color = Color.white;
+        Exit.color = Color.white;
+        cursor.enabled = true;
+        yield return new WaitForSeconds(.1f);
+        canselect = true;
+        yield break;
+
     }
 
     public IEnumerator FadeOutTitle()
@@ -85,9 +105,10 @@ public class MainMenuUI : MonoBehaviour {
         yield return new WaitForEndOfFrame();
         StartCoroutine(Game.UnloadScene(0));
     }
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
+
+    // Update is called once per frame
+    void Update()
+    {
+
+    }
 }
