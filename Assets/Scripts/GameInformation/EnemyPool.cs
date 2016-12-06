@@ -23,7 +23,7 @@ public class EnemyPool : MonoBehaviour {
     void Init()
     {
         enemyPool = new List<GameObject>();
-
+        GameObject emptyparent = Instantiate(new GameObject());
         for (int i = 0; i < EnemyTypes.Count; i++)
         {
             Debug.Log("Faggot");
@@ -31,6 +31,7 @@ public class EnemyPool : MonoBehaviour {
             {
                 GameObject obj = Instantiate(EnemyTypes[i]);
                 obj.SetActive(false);
+                obj.transform.parent = emptyparent.transform;
                 enemyPool.Add(obj);
 
             }
@@ -60,6 +61,7 @@ public class EnemyPool : MonoBehaviour {
     private void SceneManager_sceneLoaded(Scene arg0, LoadSceneMode arg1)
     {
         Debug.Log("Reinitialized");
+        previouslypooled = false;
         Init();
     }
 }
