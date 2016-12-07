@@ -10,9 +10,9 @@ public class CreateChar
     {
         Player.Instance.Stats.Level = 1;
         Player.Instance.Stats.Health = 100;
-        Player.Instance.Stats.MaxHealth = 100;
+        Player.Instance.Stats.MaxHealth = 1000;
         Player.Instance.Stats.Mana = 50;
-        Player.Instance.Stats.MaxMana = 50;
+        Player.Instance.Stats.MaxMana = 500;
         Player.Instance.Stats.Strength = 1;
         Player.Instance.Stats.Defense = 1;
         Player.Instance.Stats.Speed = 1;

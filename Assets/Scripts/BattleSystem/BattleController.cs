@@ -7,6 +7,7 @@ public class BattleController : StateMachine {
     public List<Transform> enemyspawn;
     public Transform playerspawn;
     public List<GameObject> enemies = new List<GameObject>();
+    public BattleUI UI;
 
    public void Init(GameObject obj)
     {
@@ -18,6 +19,7 @@ public class BattleController : StateMachine {
             enemies.Add(EnemyPool.current.GetEnemies(enemymobs[i].GetComponent<BaseEnemy>().ID));
             enemies[i].SetActive(true);
         }
+        UI = FindObjectOfType<BattleUI>();
 
         ChangeState<InitBattle>();
     }
