@@ -1,8 +1,13 @@
 ﻿using UnityEngine;
+using System;
 using System.Collections;
 
-public class Inputs {   
+public class Inputs{
 
+   
+
+    
+   
 
     public static bool Pause()
     {

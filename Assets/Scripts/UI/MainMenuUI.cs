@@ -50,6 +50,10 @@ public class MainMenuUI : MonoBehaviour
         cursor.enabled = false;
         canselect = false;
 
+        InputEvents.RegisterKeyEvent(InputPhase.ButtonDown, KeyCode.UpArrow, Up);
+        InputEvents.RegisterKeyEvent(InputPhase.ButtonDown, KeyCode.DownArrow, Down);
+        InputEvents.RegisterKeyEvent(InputPhase.ButtonDown, KeyCode.Z, Accept);
+
 
 
     }
@@ -82,12 +86,11 @@ public class MainMenuUI : MonoBehaviour
         StopAllCoroutines();
         DOTween.KillAll();
         Title.color = Color.white;
-        Debug.Log("Yas");
         Title.color = Color.white;
         StartGame.color = Color.white;
         Exit.color = Color.white;
         cursor.enabled = true;
-        yield return new WaitForSeconds(.1f);
+        
         canselect = true;
         yield break;
 
@@ -95,6 +98,7 @@ public class MainMenuUI : MonoBehaviour
 
     public IEnumerator FadeOutTitle()
     {
+        
         Title.DOColor(Color.clear, 2);
         StartGame.DOColor(Color.clear, 2);
         Exit.DOColor(Color.clear, 2);
@@ -102,13 +106,76 @@ public class MainMenuUI : MonoBehaviour
         yield return new WaitForSeconds(2f);
         Camera.main.GetComponent<AudioListener>().enabled = false;
         yield return StartCoroutine(Game.LoadScene(1, LoadSceneMode.Additive));
+        
         yield return new WaitForEndOfFrame();
         StartCoroutine(Game.UnloadScene(0));
+    }
+
+
+    void Up()
+    {
+        if (canselect)
+        {
+            selection--;
+            if (selection < 0)
+                selection = 1;
+            select.Play();
+
+        }
+
+    }
+    
+
+    void Down()
+    {
+        if (canselect)
+        {
+            selection++;
+            if (selection > 1)
+                selection = 0;
+            select.Play();
+
+        }
+
+    }
+
+    void Accept()
+    {
+        if (canselect)
+        {
+            switch (selection)
+            {
+                case 0:
+                    Debug.Log("Checked");
+                    InputEvents.ClearList();
+                    StartCoroutine(FadeOutTitle());
+                    CreateChar.Init();
+                    Game.Instance.state = GameState.InWorld;
+                    select.Play();
+                    break;
+
+                case 1:
+                    Application.Quit();
+                    break;
+            }
+        }
+
+        if (!canselect)
+        {
+            StartCoroutine(Skip());
+        }
+        
+    }
+
+    void OnDestroy()
+    {
+        InputEvents.ClearList();
     }
 
     // Update is called once per frame
     void Update()
     {
+        cursor.rectTransform.localPosition = new Vector3(-53, -50 * selection, 0);
 
     }
 }

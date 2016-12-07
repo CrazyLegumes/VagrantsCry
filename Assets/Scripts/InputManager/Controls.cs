@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.SceneManagement;
+using System;
 
 [System.Serializable]
 class PlayerSettings
@@ -35,8 +36,10 @@ public class Controls : MonoBehaviour
     {
         DontDestroyOnLoad(transform.gameObject);
         Game.Instance.state = GameState.MainMenu;
+        
     }
 
+    
 
     void Init()
     {
@@ -85,10 +88,12 @@ public class Controls : MonoBehaviour
         {
 
             case GameState.MainMenu:
-                MenuControls();
+
+               // MenuControls();
                 break;
 
             case GameState.InWorld:
+                SceneManager.sceneLoaded += SceneManager_sceneLoaded1;
                 Movement();
                 break;
 
@@ -100,6 +105,11 @@ public class Controls : MonoBehaviour
 
 
 
+    }
+
+    private void SceneManager_sceneLoaded1(Scene arg0, LoadSceneMode arg1)
+    {
+        Init();
     }
 
     private void Pause()
@@ -120,10 +130,11 @@ public class Controls : MonoBehaviour
 
     private void Movement()
     {
+        
 
         if (settings.canmove)
         {
-
+           
             settings.inp.x = Inputs.HorizontalAxis();
             settings.inp.z = Inputs.VerticalAxis();
             settings.inp.x *= settings.movespeed;
