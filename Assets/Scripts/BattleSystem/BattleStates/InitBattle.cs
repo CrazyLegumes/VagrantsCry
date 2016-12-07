@@ -3,8 +3,31 @@ using System.Collections;
 
 public class InitBattle : BattleState {
 
-	// Use this for initialization
-	void Start () {
+    public override void Enter()
+    {
+        base.Enter();
+        StartCoroutine(Init());
+    }
+
+    IEnumerator Init()
+    {
+        for (int i = 0; i < enemies.Count; i++)
+        {
+            enemies[i].transform.position = enemyspawn[i].position;
+            Debug.Log("Doot");
+            yield return null;
+
+
+        }
+        GameObject.Find("Player").transform.position = playerspawn.position;
+        Game.Instance.state = GameState.InBattle;
+        yield return null;
+
+
+    }
+
+    // Use this for initialization
+    void Start () {
 	
 	}
 	

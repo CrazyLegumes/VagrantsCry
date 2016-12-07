@@ -11,7 +11,7 @@ public class BasicMob : BaseEnemy {
     void OnTriggerEnter(Collider col)
     {
         if (col.gameObject.tag == "Player" && Game.Instance.state == GameState.InWorld)
-            return;
+            FindObjectOfType<BattleController>().Init(gameObject);
            
 
     }

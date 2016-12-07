@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
-
+[System.Serializable]
 public abstract class State : MonoBehaviour {
 
     public virtual void Enter()
