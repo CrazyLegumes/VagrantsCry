@@ -16,8 +16,8 @@ public class BattleController : StateMachine {
         CreateChar.StorePlayerInfo();
         for(int i = 0; i < enemymobs.Count; i++)
         {
-            enemies.Add(EnemyPool.current.GetEnemies(enemymobs[i].GetComponent<BaseEnemy>().ID));
-            enemies[i].SetActive(true);
+            enemies.Add(EnemyPool.current.GetEnemies(enemymobs[i].GetComponent<Mob>().Owner.ID));
+           
         }
         UI = FindObjectOfType<BattleUI>();
 

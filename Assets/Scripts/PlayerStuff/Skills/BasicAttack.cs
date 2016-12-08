@@ -1,9 +1,10 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class BasicAttack : Skills {
+public class BasicAttack : Skills
+{
 
-    
+
 
     public override void Init()
     {
@@ -14,5 +15,7 @@ public class BasicAttack : Skills {
         Desc = "Your Basic attack! Time it right for extra damage";
         Timer = 1;
     }
-	
+
+    public BasicAttack() { }
+
 }

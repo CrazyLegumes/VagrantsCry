@@ -19,6 +19,12 @@ public class CreateChar
         Player.Instance.Stats.Luck = 1;
         Player.Instance.Stats.Experience = 0;
         Player.Instance.Stats.MaxExperience = 10;
+        Player.Instance.Skills.Add(new GenericSpamAttack());
+        Player.Instance.Skills.Add(new GenericHoldAttack());
+        for (int i = 0; i < Player.Instance.Skills.Count; i++)
+            Player.Instance.Skills[i].Init();
+
+        Player.Instance.basicattack.Init();
         StorePlayerInfo();
         Save.SaveAllFiles();
     }
@@ -44,6 +50,7 @@ public class CreateChar
         Game.Instance.Luck = Player.Instance.Stats.Luck;
         Game.Instance.Experience = Player.Instance.Stats.Experience;
         Game.Instance.MaxExperience = Player.Instance.Stats.MaxExperience;
+        Game.Instance.Skills = Player.Instance.Skills;
     }
 
     public static void RetrievePlayerInfo()
@@ -60,5 +67,6 @@ public class CreateChar
         Player.Instance.Stats.Luck = Game.Instance.Luck;
         Player.Instance.Stats.Experience = Game.Instance.Experience;
         Player.Instance.Stats.MaxExperience = Game.Instance.MaxExperience;
+        Player.Instance.Skills = Game.Instance.Skills;
     }
 }

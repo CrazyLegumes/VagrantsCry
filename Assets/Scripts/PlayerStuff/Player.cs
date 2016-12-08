@@ -1,11 +1,16 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
+
 [System.Serializable]
 public class Player
 {
     private static Player instance;
     private string pname;
     private BaseStats stats;
+    public Skills basicattack = new BasicAttack();
+    public Skills selected;
+    private List<Skills> skills = new List<Skills>();
 
     public static Player Instance
     {
@@ -34,6 +39,12 @@ public class Player
     public BaseStats Stats
     {
         get { return stats; }
+    }
+
+    public List<Skills> Skills
+    {
+        get { return skills; }
+        set { skills = value; }
     }
 
 

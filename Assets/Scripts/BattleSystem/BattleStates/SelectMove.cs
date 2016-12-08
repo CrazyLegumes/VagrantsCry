@@ -64,6 +64,7 @@ public class SelectMove : BattleState{
         {
             case "Attack":
                 controller.ChangeState<SelectTarget>();
+                Player.Instance.selected = Player.Instance.basicattack;
                 break;
             case "Skill":
                 //controller.ChangeState<SelectSkill>();

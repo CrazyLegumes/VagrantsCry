@@ -2,7 +2,8 @@
 using System.Collections;
 using UnityEngine.UI;
 
-public class BasicMob : BaseEnemy {
+public class BasicMob : BaseEnemy
+{
 
     [SerializeField]
     private BaseEnemy me;
@@ -13,15 +14,14 @@ public class BasicMob : BaseEnemy {
     {
         if (col.gameObject.tag == "Player" && Game.Instance.state == GameState.InWorld)
             FindObjectOfType<BattleController>().Init(gameObject);
-           
+
 
     }
-	// Use this for initialization
-	void Awake () {
 
+    public override void Init()
+    {
         me = GetComponent<BasicMob>();
         me.Name = "Mobu";
-        me.Cursor.gameObject.SetActive(false);
         me.ID = 1001;
         me.Stats.Level = 1;
         me.Stats.Health = 10;
@@ -33,10 +33,18 @@ public class BasicMob : BaseEnemy {
         me.Stats.Speed = 0;
         me.Stats.Luck = 0;
         me.EXPGiven = 20;
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
+
+    }
+    // Use this for initialization
+    void Start()
+    {
+        Init();
+
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+
+    }
 }

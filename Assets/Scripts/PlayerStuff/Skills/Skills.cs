@@ -7,6 +7,8 @@ public enum attacktype
     Spam,
     Hold
 }
+
+[System.Serializable]
 public class Skills
 {
     private int id;

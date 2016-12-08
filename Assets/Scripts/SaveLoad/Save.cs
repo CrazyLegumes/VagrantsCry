@@ -24,6 +24,7 @@ public class Save : MonoBehaviour {
         bf.Serialize(save, Game.Instance.Luck);
         bf.Serialize(save, Game.Instance.Experience);
         bf.Serialize(save, Game.Instance.MaxExperience);
+        bf.Serialize(save, Game.Instance.Skills);
 
         save.Close();
 

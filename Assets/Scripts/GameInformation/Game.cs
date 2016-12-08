@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine.SceneManagement;
 
 
@@ -77,6 +78,7 @@ public class Game
     public Vector3 position { get; set; }
     public GameState state { get; set; }
     public bool isPaused { get; set; }
+    public List<Skills> Skills { get; set; }
 
 
 

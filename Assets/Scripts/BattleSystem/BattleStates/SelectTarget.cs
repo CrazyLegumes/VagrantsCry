@@ -32,16 +32,16 @@ public class SelectTarget : BattleState
         yield return null;
         option = 0;
 
-            controller.enemies[option].GetComponent<BaseEnemy>().Cursor.gameObject.SetActive(true);
+        controller.enemies[option].GetComponent<Mob>().cursor.gameObject.SetActive(true);
         canselect = true;
 
     }
 
     IEnumerator DeInit()
     {
-        for(int i= 0; i < enemies.Count; i++)
+        for (int i = 0; i < enemies.Count; i++)
         {
-            enemies[i].GetComponent<BaseEnemy>().Cursor.gameObject.SetActive(false);
+            enemies[i].GetComponent<Mob>().cursor.gameObject.SetActive(false);
         }
         yield return null;
     }
@@ -51,11 +51,11 @@ public class SelectTarget : BattleState
         base.ShiftUp();
         if (canselect)
         {
-            controller.enemies[option].GetComponent<BaseEnemy>().Cursor.gameObject.SetActive(false);
+            controller.enemies[option].GetComponent<Mob>().cursor.gameObject.SetActive(false);
             option--;
             if (option < 0)
                 option = enemies.Count - 1;
-            controller.enemies[option].GetComponent<BaseEnemy>().Cursor.gameObject.SetActive(true);
+            controller.enemies[option].GetComponent<Mob>().cursor.gameObject.SetActive(true);
         }
 
     }
@@ -65,11 +65,11 @@ public class SelectTarget : BattleState
         base.ShiftDown();
         if (canselect)
         {
-            controller.enemies[option].GetComponent<BaseEnemy>().Cursor.gameObject.SetActive(false);
+            controller.enemies[option].GetComponent<Mob>().cursor.gameObject.SetActive(false);
             option++;
             if (option > enemies.Count - 1)
                 option = 0;
-            controller.enemies[option].GetComponent<BaseEnemy>().Cursor.gameObject.SetActive(true);
+            controller.enemies[option].GetComponent<Mob>().cursor.gameObject.SetActive(true);
         }
 
     }

@@ -33,6 +33,8 @@ public class BaseEnemy : MonoBehaviour
 
     }
 
+    public virtual void Init() { }
+
     public Image Cursor
     {
         get { return cursor; }
