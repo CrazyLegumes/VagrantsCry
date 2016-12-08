@@ -8,6 +8,9 @@ public class BattleController : StateMachine {
     public Transform playerspawn;
     public List<GameObject> enemies = new List<GameObject>();
     public BattleUI UI;
+    public Skills selectedattack;
+    public BaseEnemy target;
+
 
    public void Init(GameObject obj)
     {

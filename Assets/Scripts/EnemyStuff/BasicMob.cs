@@ -14,7 +14,7 @@ public class BasicMob : BaseEnemy
     {
         if (col.gameObject.tag == "Player" && Game.Instance.state == GameState.InWorld)
             FindObjectOfType<BattleController>().Init(gameObject);
-
+        
 
     }
 

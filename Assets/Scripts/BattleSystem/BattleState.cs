@@ -11,6 +11,9 @@ public abstract class BattleState : State
     public List<Transform> enemyspawn { get { return controller.enemyspawn; } }
     public Transform playerspawn { get { return controller.playerspawn; } }
     public List<GameObject> enemies { get { return controller.enemies; } }
+    public BattleUI ui { get { return controller.UI; } }
+    public BaseEnemy target { get { return controller.target; } set { controller.target = value; } }
+    public Skills selected { get { return controller.selectedattack;  } set { controller.selectedattack = value; } }
 
 
 

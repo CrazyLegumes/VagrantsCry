@@ -32,7 +32,8 @@ public class SelectTarget : BattleState
         yield return null;
         option = 0;
 
-        controller.enemies[option].GetComponent<Mob>().cursor.gameObject.SetActive(true);
+        enemies[option].GetComponent<Mob>().cursor.gameObject.SetActive(true);
+        UpdateTarget();
         canselect = true;
 
     }
@@ -41,7 +42,8 @@ public class SelectTarget : BattleState
     {
         for (int i = 0; i < enemies.Count; i++)
         {
-            enemies[i].GetComponent<Mob>().cursor.gameObject.SetActive(false);
+            if (enemies[i].gameObject != target.gameObject)
+                enemies[i].GetComponent<Mob>().cursor.gameObject.SetActive(false);
         }
         yield return null;
     }
@@ -51,12 +53,13 @@ public class SelectTarget : BattleState
         base.ShiftUp();
         if (canselect)
         {
-            controller.enemies[option].GetComponent<Mob>().cursor.gameObject.SetActive(false);
+            enemies[option].GetComponent<Mob>().cursor.gameObject.SetActive(false);
             option--;
             if (option < 0)
                 option = enemies.Count - 1;
-            controller.enemies[option].GetComponent<Mob>().cursor.gameObject.SetActive(true);
+            enemies[option].GetComponent<Mob>().cursor.gameObject.SetActive(true);
         }
+        UpdateTarget();
 
     }
 
@@ -65,12 +68,13 @@ public class SelectTarget : BattleState
         base.ShiftDown();
         if (canselect)
         {
-            controller.enemies[option].GetComponent<Mob>().cursor.gameObject.SetActive(false);
+            enemies[option].GetComponent<Mob>().cursor.gameObject.SetActive(false);
             option++;
             if (option > enemies.Count - 1)
                 option = 0;
-            controller.enemies[option].GetComponent<Mob>().cursor.gameObject.SetActive(true);
+            enemies[option].GetComponent<Mob>().cursor.gameObject.SetActive(true);
         }
+        UpdateTarget();
 
     }
 
@@ -78,6 +82,32 @@ public class SelectTarget : BattleState
     {
         base.Fire2();
         controller.ChangeState<SelectMove>();
+    }
+
+
+
+    protected override void Fire1()
+    {
+        base.Fire1();
+        switch (selected.Type)
+        {
+            case attacktype.Time:
+                controller.ChangeState<ExecuteTimedAttack>();
+                break;
+            case attacktype.Spam:
+                //controller.ChangeState<ExecuteSpamAtack>();
+                break;
+            case attacktype.Hold:
+                //controller.ChangeState<ExecuteHoldAttack>();
+                break;
+        }
+    }
+
+
+    void UpdateTarget()
+    {
+        target = enemies[option].GetComponent<Mob>().Owner;
+
     }
 
 
@@ -90,6 +120,7 @@ public class SelectTarget : BattleState
     // Update is called once per frame
     void Update()
     {
+        Debug.Log(selected.Name);
 
     }
 }

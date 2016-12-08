@@ -36,7 +36,6 @@ public class InputEvents : MonoBehaviour {
 
     public static void RegisterKeyEvent(InputPhase phase, KeyCode key, InputDelegate method)
     {
-        Debug.Log("Check");
         if(keyEventList == null)
         {
             keyEventList = new List<KeyEvent>();
@@ -56,14 +55,14 @@ public class InputEvents : MonoBehaviour {
     public static void RemoveKeyEvent(InputPhase phase, KeyCode key)
     {
         keyEventList.Remove(GetKeyEventFromList(phase, key));
-        Debug.Log("Removed");
+       
 
     }
 
     public static void ClearList()
     {
         keyEventList.Clear();
-        Debug.Log("Cleared");
+        
     }
 
 

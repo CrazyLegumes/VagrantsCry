@@ -10,10 +10,13 @@ public class BasicAttack : Skills
     {
         base.Init();
         ID = 1001;
+        Name = "Basic Strike";
         Cost = 0;
         Type = attacktype.Time;
         Desc = "Your Basic attack! Time it right for extra damage";
         Timer = 1;
+        Damage = Player.Instance.Stats.Strength;
+        Bound = .05f;
     }
 
     public BasicAttack() { }

@@ -13,7 +13,7 @@ public class CreateChar
         Player.Instance.Stats.MaxHealth = 1000;
         Player.Instance.Stats.Mana = 50;
         Player.Instance.Stats.MaxMana = 500;
-        Player.Instance.Stats.Strength = 1;
+        Player.Instance.Stats.Strength = 4;
         Player.Instance.Stats.Defense = 1;
         Player.Instance.Stats.Speed = 1;
         Player.Instance.Stats.Luck = 1;

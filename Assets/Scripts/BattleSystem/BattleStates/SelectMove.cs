@@ -24,7 +24,7 @@ public class SelectMove : BattleState{
     IEnumerator Init()
     {
         yield return null;
-        controller.UI.EnableSelect();
+        ui.EnableSelect();
         canselect = true;
         
 
@@ -34,7 +34,7 @@ public class SelectMove : BattleState{
     {
         yield return null;
         canselect = false;
-        controller.UI.DisableSelect();
+        ui.DisableSelect();
     }
 
 
@@ -64,7 +64,7 @@ public class SelectMove : BattleState{
         {
             case "Attack":
                 controller.ChangeState<SelectTarget>();
-                Player.Instance.selected = Player.Instance.basicattack;
+                selected = Player.Instance.basicattack;
                 break;
             case "Skill":
                 //controller.ChangeState<SelectSkill>();
@@ -94,7 +94,7 @@ public class SelectMove : BattleState{
 
     void UpdateOption()
     {
-        controller.UI.cursor.rectTransform.anchoredPosition = new Vector2(.5f, -1 - (53 * option));
+        ui.cursor.rectTransform.anchoredPosition = new Vector2(.5f, -1 - (53 * option));
         Option = sOption[option];
         
 

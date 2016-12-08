@@ -85,4 +85,25 @@ public class BaseEnemy : MonoBehaviour
         set { expgiven = value; }
     }
 
+
+    public void HealMe(int health)
+    {
+        stats.Health += health;
+        if (stats.Health > stats.MaxHealth)
+            stats.Health = stats.MaxHealth;
+    }
+
+
+    public void DamageMe(int dmg)
+    {
+        stats.Health -= dmg;
+        if (stats.Health < 0)
+            stats.Health = 0;
+    }
+
+
+
+
+
+
 }
