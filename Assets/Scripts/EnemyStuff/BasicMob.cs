@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 public class BasicMob : BaseEnemy {
 
@@ -20,7 +21,7 @@ public class BasicMob : BaseEnemy {
 
         me = GetComponent<BasicMob>();
         me.Name = "Mobu";
-
+        me.Cursor.gameObject.SetActive(false);
         me.ID = 1001;
         me.Stats.Level = 1;
         me.Stats.Health = 10;

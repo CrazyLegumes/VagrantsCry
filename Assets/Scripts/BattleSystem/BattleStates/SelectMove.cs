@@ -26,6 +26,7 @@ public class SelectMove : BattleState{
         yield return null;
         controller.UI.EnableSelect();
         canselect = true;
+        
 
     }
 
@@ -62,7 +63,7 @@ public class SelectMove : BattleState{
         switch (Option)
         {
             case "Attack":
-                //controller.ChangeState<SelectTarget>();
+                controller.ChangeState<SelectTarget>();
                 break;
             case "Skill":
                 //controller.ChangeState<SelectSkill>();

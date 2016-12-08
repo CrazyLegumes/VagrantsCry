@@ -39,6 +39,13 @@ public abstract class BattleState : State
         InputEvents.RemoveKeyEvent(InputPhase.ButtonDown, KeyCode.LeftArrow);
         InputEvents.RemoveKeyEvent(InputPhase.ButtonDown, KeyCode.RightArrow);
         InputEvents.RemoveKeyEvent(InputPhase.ButtonDown, KeyCode.Z);
+        InputEvents.RemoveKeyEvent(InputPhase.ButtonDown, KeyCode.Z);
+        InputEvents.RemoveKeyEvent(InputPhase.ButtonDown, KeyCode.X);
+        InputEvents.RemoveKeyEvent(InputPhase.ButtonDown, KeyCode.C);
+
+        InputEvents.RemoveKeyEvent(InputPhase.ButtonDown, KeyCode.DownArrow);
+        InputEvents.RemoveKeyEvent(InputPhase.ButtonDown, KeyCode.UpArrow);
+
     }
 
 

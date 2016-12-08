@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.UI;
 
 [System.Serializable]
 public class BaseEnemy : MonoBehaviour
@@ -9,8 +10,12 @@ public class BaseEnemy : MonoBehaviour
     [SerializeField]
     private int id;
 
+    [SerializeField]
+    private Image cursor;
+   
     [System.NonSerialized]
     private BaseStats stats = new BaseStats();
+
 
 
 
@@ -21,9 +26,17 @@ public class BaseEnemy : MonoBehaviour
 
 
 
+
+
     public BaseEnemy()
     {
 
+    }
+
+    public Image Cursor
+    {
+        get { return cursor; }
+        set { cursor = value; }
     }
 
     public int ID
