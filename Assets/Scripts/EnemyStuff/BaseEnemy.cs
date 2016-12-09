@@ -24,6 +24,7 @@ public class BaseEnemy : MonoBehaviour
 
     [SerializeField]
     private List<GameObject> mobs = new List<GameObject>();
+    private List<Skills> enemyskills = new List<Skills>();
 
 
 
@@ -33,6 +34,7 @@ public class BaseEnemy : MonoBehaviour
     {
 
     }
+    
 
     public virtual void Init() {
         damage.gameObject.SetActive(false);
@@ -93,6 +95,8 @@ public class BaseEnemy : MonoBehaviour
         get { return expgiven; }
         set { expgiven = value; }
     }
+
+    public List<Skills> enemySkills { get { return enemyskills; } }
 
 
     

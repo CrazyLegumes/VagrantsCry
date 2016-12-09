@@ -13,7 +13,8 @@ public abstract class BattleState : State
     public List<GameObject> enemies { get { return controller.enemies; } }
     public BattleUI ui { get { return controller.UI; } }
     public Mob target { get { return controller.target; } set { controller.target = value; } }
-    public Skills selected { get { return controller.selectedattack;  } set { controller.selectedattack = value; } }
+    public Skills selected { get { return controller.selectedattack; } set { controller.selectedattack = value; } }
+    public Mob attacker { get { return controller.attacker; } set { controller.attacker = value; } }
 
 
 

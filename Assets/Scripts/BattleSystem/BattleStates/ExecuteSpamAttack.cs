@@ -81,7 +81,7 @@ public class ExecuteSpamAttack : BattleState
                     buttonUi.SetActive(false);
                 yield return new WaitForSeconds(1f);
 
-                controller.ChangeState<SelectMove>();
+                controller.ChangeState<EnemyCheck>();
                 yield break;
             }
 

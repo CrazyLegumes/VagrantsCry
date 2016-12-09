@@ -68,9 +68,6 @@ public class BattleUI : MonoBehaviour {
         MP.maxValue = Player.Instance.Stats.MaxMana;
         MP.value = Mathf.Lerp(MP.value, Player.Instance.Stats.Mana, 10);
 
-        if (Inputs.A_Button())
-        {
-            Player.Instance.HealMe(200);
-        }
+
     }
 }

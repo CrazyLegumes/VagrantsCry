@@ -1,6 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
+using System.Collections.Generic;
+using DG.Tweening;
 
 public class Mob : MonoBehaviour {
    
@@ -13,8 +15,9 @@ public class Mob : MonoBehaviour {
     public Image cursor;
     public Text damage;
     public bool dead;
-    bool attacked;
-
+    public bool attacked;
+    private List<Skills> skills = new List<Skills>();
+    
 
 
     public void Init()
@@ -26,6 +29,7 @@ public class Mob : MonoBehaviour {
         attacked = false;
         dead = false;
         mobstats = new BaseStats();
+        
         CopyStats();
         
     }
@@ -42,6 +46,7 @@ public class Mob : MonoBehaviour {
         mobstats.Defense = Owner.Stats.Defense;
         mobstats.Level = Owner.Stats.Level;
         mobstats.Luck = Owner.Stats.Luck;
+        skills = Owner.enemySkills;
  
 
     }
@@ -76,5 +81,19 @@ public class Mob : MonoBehaviour {
         damage.text = "" + dmg;
 
 
+    }
+
+    public void Fade()
+    {
+        if (!dead)
+            return;
+        gameObject.GetComponent<Material>().DOColor(Color.clear, 1f);
+    }
+
+    public Skills GetSkillFromList()
+    {
+        int max = skills.Count;
+        int pick = Random.Range(0, max);
+        return skills[pick];
     }
 }

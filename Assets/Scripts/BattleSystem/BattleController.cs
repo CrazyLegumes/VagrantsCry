@@ -10,6 +10,7 @@ public class BattleController : StateMachine {
     public BattleUI UI;
     public Skills selectedattack;
     public Mob target;
+    public Mob attacker;
 
 
    public void Init(GameObject obj)

@@ -78,7 +78,7 @@ public class ExecuteTimedAttack : BattleState
             {
                 Debug.Log("Missed");
                
-                controller.ChangeState<SelectMove>();
+                controller.ChangeState<EnemyCheck>();
                 yield break;
             }
             if (pressed)
@@ -119,7 +119,7 @@ public class ExecuteTimedAttack : BattleState
         if (Selected != option[1])
         {
             Debug.Log("Missed!");
-            controller.ChangeState<SelectMove>();
+            controller.ChangeState<EnemyCheck>();
 
         }
 
@@ -137,7 +137,7 @@ public class ExecuteTimedAttack : BattleState
         if (Selected != option[2])
         {
             Debug.Log("Missed!");
-            controller.ChangeState<SelectMove>();
+            controller.ChangeState<EnemyCheck>();
 
         }
 
@@ -177,7 +177,7 @@ public class ExecuteTimedAttack : BattleState
         target.DamageMe(dmg);
         Debug.Log("Did " + dmg + " to " + target.Owner.Name);
         Debug.Log(target.mobstats.Health);
-        controller.ChangeState<SelectMove>();
+        controller.ChangeState<EnemyCheck>();
 
     }
 
