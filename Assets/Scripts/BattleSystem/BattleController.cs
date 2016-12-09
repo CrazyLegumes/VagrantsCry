@@ -22,6 +22,7 @@ public class BattleController : StateMachine {
         List<GameObject> enemymobs = obj.GetComponent<BaseEnemy>().Mobs;
         obj.SetActive(false);
         CreateChar.StorePlayerInfo();
+        enemies.Clear();
         for(int i = 0; i < enemymobs.Count; i++)
         {
             enemies.Add(EnemyPool.current.GetEnemies(enemymobs[i].GetComponent<Mob>().Owner.ID));

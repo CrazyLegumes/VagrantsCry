@@ -26,9 +26,12 @@ public class EndBattle : BattleState {
             for(int i =0; i < enemies.Count; i++)
             {
                 enemies[i].SetActive(false);
+                
             }
             controller.origenemy.SetActive(true);
+           
         }
+        GameObject.Find("Player").transform.position = Game.Instance.position - new Vector3(3,0,0);
         yield break;
     }
 

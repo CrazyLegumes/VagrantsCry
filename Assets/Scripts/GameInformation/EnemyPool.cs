@@ -65,6 +65,7 @@ public class EnemyPool : MonoBehaviour {
             if (!enemyPool[i].activeInHierarchy && enemyPool[i].GetComponent<Mob>().Owner.ID == enemyID)
             {
                 enemyPool[i].SetActive(true);
+                enemyPool[i].GetComponent<Renderer>().material.color = Color.white;
                 return enemyPool[i];
             }
         }

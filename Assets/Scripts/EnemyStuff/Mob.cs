@@ -24,12 +24,13 @@ public class Mob : MonoBehaviour {
     public void Init()
     {
         Owner = owner.GetComponent<BaseEnemy>();
+
         
         damage = Owner.Damage;
         cursor.gameObject.SetActive(false);
         attacked = false;
         dead = false;
-        gameObject.GetComponent<Renderer>().material.color = Color.white;
+       
 
         mobstats = new BaseStats();
         

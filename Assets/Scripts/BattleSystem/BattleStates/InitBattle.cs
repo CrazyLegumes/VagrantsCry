@@ -11,6 +11,7 @@ public class InitBattle : BattleState {
 
     IEnumerator Init()
     {
+        
         for (int i = 0; i < enemies.Count; i++)
         {
             enemies[i].transform.position = enemyspawn[i].position;
@@ -20,6 +21,7 @@ public class InitBattle : BattleState {
 
 
         }
+        Game.Instance.position = GameObject.Find("Player").transform.position;
         GameObject.Find("Player").transform.position = playerspawn.position;
         Game.Instance.state = GameState.InBattle;
         ui.EnableInfo();
