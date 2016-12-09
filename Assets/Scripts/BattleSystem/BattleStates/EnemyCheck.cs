@@ -23,13 +23,16 @@ public class EnemyCheck : BattleState
 
     IEnumerator Init()
     {
+
         for (int i = 0; i < enemies.Count; i++)
         {
             GameObject obj = enemies[i];
             if (obj.GetComponent<Mob>().dead)
             {
                 obj.GetComponent<Mob>().Fade();
+                yield return new WaitForSeconds(1);
                 enemies[i].SetActive(false);
+                enemies.Remove(enemies[i]);
 
             }
             yield return null;

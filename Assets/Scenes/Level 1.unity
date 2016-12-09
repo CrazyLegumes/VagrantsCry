@@ -169,6 +169,7 @@ MonoBehaviour:
   enemies: []
   UI: {fileID: 0}
   target: {fileID: 0}
+  attacker: {fileID: 0}
 --- !u!4 &19163517
 Transform:
   m_ObjectHideFlags: 0
@@ -1014,8 +1015,8 @@ RectTransform:
   m_RootOrder: 0
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 19.45, y: 0}
+  m_SizeDelta: {x: 38.9, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &658672279
 MonoBehaviour:
@@ -1115,10 +1116,10 @@ RectTransform:
   - {fileID: 1732563004}
   m_Father: {fileID: 917511842}
   m_RootOrder: 1
-  m_AnchorMin: {x: 0.018000001, y: 0.42247656}
-  m_AnchorMax: {x: 0.34300002, y: 0.58252347}
-  m_AnchoredPosition: {x: 0.3000002, y: 0.25}
-  m_SizeDelta: {x: -1, y: -1.5}
+  m_AnchorMin: {x: 0.018000001, y: 0.35340074}
+  m_AnchorMax: {x: 0.95248353, y: 0.5962439}
+  m_AnchoredPosition: {x: 4.305002, y: 5.75}
+  m_SizeDelta: {x: 7.3899956, y: -20.5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &810739795
 MonoBehaviour:
@@ -1141,10 +1142,10 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 10
+    m_FontSize: 5
     m_FontStyle: 1
     m_BestFit: 1
-    m_MinSize: 10
+    m_MinSize: 1
     m_MaxSize: 40
     m_Alignment: 0
     m_AlignByGeometry: 0
@@ -1765,6 +1766,8 @@ MonoBehaviour:
   HPText: {fileID: 1806453699}
   MPText: {fileID: 810739795}
   SkillTab: {fileID: 853222572}
+  Description: {fileID: 1620199957}
+  DescriptionBox: {fileID: 2101044025}
 --- !u!1 &1144796702
 GameObject:
   m_ObjectHideFlags: 0
@@ -2076,10 +2079,10 @@ RectTransform:
   - {fileID: 717072335}
   m_Father: {fileID: 1806453698}
   m_RootOrder: 0
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 38.7, y: -15.7}
-  m_SizeDelta: {x: 160, y: 20}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: -14.750001, y: -24.3}
+  m_SizeDelta: {x: -30.899998, y: -20.8}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1315313837
 MonoBehaviour:
@@ -2572,7 +2575,7 @@ GameObject:
   - 222: {fileID: 1620199958}
   - 114: {fileID: 1620199957}
   m_Layer: 5
-  m_Name: Text
+  m_Name: Desc
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2602,7 +2605,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1620199955}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 708705254, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
   m_Name: 
@@ -2620,15 +2623,15 @@ MonoBehaviour:
     m_FontSize: 14
     m_FontStyle: 0
     m_BestFit: 0
-    m_MinSize: 10
-    m_MaxSize: 40
+    m_MinSize: 0
+    m_MaxSize: 154
     m_Alignment: 0
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Description
+  m_Text: 
 --- !u!222 &1620199958
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2842,10 +2845,10 @@ RectTransform:
   - {fileID: 1029205826}
   m_Father: {fileID: 810739794}
   m_RootOrder: 0
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 40.7, y: -29.1}
-  m_SizeDelta: {x: 160, y: 20}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0.95049864, y: 1}
+  m_AnchoredPosition: {x: -27.81, y: -24.300001}
+  m_SizeDelta: {x: -59.02, y: -16.199999}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1732563005
 MonoBehaviour:
@@ -2994,10 +2997,10 @@ RectTransform:
   - {fileID: 1315313836}
   m_Father: {fileID: 917511842}
   m_RootOrder: 0
-  m_AnchorMin: {x: 0.02659846, y: 0.7031677}
-  m_AnchorMax: {x: 0.372, y: 0.8654162}
-  m_AnchoredPosition: {x: -0.19999981, y: 0.75}
-  m_SizeDelta: {x: -3, y: 1.5}
+  m_AnchorMin: {x: 0.02659846, y: 0.64255744}
+  m_AnchorMax: {x: 0.61800003, y: 0.8654162}
+  m_AnchoredPosition: {x: 46.65, y: 4.6}
+  m_SizeDelta: {x: 93.5, y: -14.8}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1806453699
 MonoBehaviour:
@@ -3020,11 +3023,11 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 10
+    m_FontSize: 1
     m_FontStyle: 1
     m_BestFit: 1
-    m_MinSize: 1
-    m_MaxSize: 119
+    m_MinSize: 0
+    m_MaxSize: 40
     m_Alignment: 0
     m_AlignByGeometry: 0
     m_RichText: 1
@@ -3308,7 +3311,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &2101044024
 RectTransform:
   m_ObjectHideFlags: 0

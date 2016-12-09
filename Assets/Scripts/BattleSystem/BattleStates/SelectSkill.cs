@@ -82,6 +82,8 @@ public class SelectSkill :BattleState {
     {
         selected = available[option];
         ui.cursor.rectTransform.anchoredPosition = new Vector2(133.5f, -1 - (53 * option));
+        ui.Description.text = "" + selected.Name + ": " + selected.Desc + "\n Attack Type: " + selected.Type + "\n Damage: " + selected.Damage + "\n Mana Cost: " +
+             selected.Cost + "\n Time: " + selected.Timer;
     }
 	
 	// Update is called once per frame

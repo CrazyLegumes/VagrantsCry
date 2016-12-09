@@ -25,8 +25,8 @@ public class BasicMob : BaseEnemy
         me.Name = "Mobu";
         me.ID = 1001;
         me.Stats.Level = 1;
-        me.Stats.Health = 50;
-        me.Stats.MaxHealth = 50;
+        me.Stats.Health = 10;
+        me.Stats.MaxHealth = 10;
         me.Stats.Mana = 5;
         me.Stats.MaxMana = 5;
         me.Stats.Strength = 3;

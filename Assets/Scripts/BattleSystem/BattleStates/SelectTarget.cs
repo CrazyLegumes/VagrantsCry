@@ -108,6 +108,7 @@ public class SelectTarget : BattleState
     void UpdateTarget()
     {
         target = enemies[option].GetComponent<Mob>();
+        ui.Description.text = target.Owner.Name + ": Level: " + target.mobstats.Level + " HP: " + target.mobstats.Health + "/" + target.mobstats.MaxHealth;
 
     }
 

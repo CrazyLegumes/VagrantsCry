@@ -26,6 +26,7 @@ public class ExecuteTimedAttack : BattleState
             buttonUi.SetActive(false);
             buttonUi.GetComponentInChildren<Animator>().speed = 1;
         }
+        target.cursor.gameObject.SetActive(false);
         buttonUi = null;
         timer = 0;
         

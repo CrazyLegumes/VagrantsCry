@@ -19,13 +19,20 @@ public class BeginEnemyTurn : BattleState{
             if (!enemies[i].GetComponent<Mob>().attacked)
             {
                 attacker = enemies[i].GetComponent<Mob>();
+                Debug.Log(attacker.gameObject.name);
+                enemies[i].GetComponent<Mob>().attacked = true;
                 break;
             }
         }
 
 
         if (attacker != null)
+        {
+            yield return new WaitForSeconds(2f);
+            
             controller.ChangeState<DefendYourself>();
+            yield break;
+        }
 
         if (attacker == null)
         {
@@ -34,6 +41,7 @@ public class BeginEnemyTurn : BattleState{
                 enemies[i].GetComponent<Mob>().attacked = false;
             }
             controller.ChangeState<SelectMove>();
+            yield break;
         }
     }
 

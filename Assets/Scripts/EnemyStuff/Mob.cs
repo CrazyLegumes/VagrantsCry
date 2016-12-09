@@ -87,7 +87,7 @@ public class Mob : MonoBehaviour {
     {
         if (!dead)
             return;
-        gameObject.GetComponent<Material>().DOColor(Color.clear, 1f);
+        gameObject.GetComponent<Renderer>().material.DOColor(Color.clear, 1f);
     }
 
     public Skills GetSkillFromList()

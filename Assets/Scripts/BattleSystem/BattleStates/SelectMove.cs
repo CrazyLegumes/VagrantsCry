@@ -1,7 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class SelectMove : BattleState{
+public class SelectMove : BattleState
+{
 
     private int option = 0;
     private bool canselect = false;
@@ -29,7 +30,7 @@ public class SelectMove : BattleState{
         UpdateOption();
         yield return new WaitForSeconds(.5f);
         canselect = true;
-        
+
 
     }
 
@@ -37,7 +38,7 @@ public class SelectMove : BattleState{
     {
         yield return null;
         canselect = false;
-        
+
     }
 
 
@@ -70,9 +71,11 @@ public class SelectMove : BattleState{
             case "Attack":
                 controller.ChangeState<SelectTarget>();
                 selected = Player.Instance.basicattack;
+
                 break;
             case "Skill":
                 controller.ChangeState<SelectSkill>();
+
                 break;
             case "Item":
                 //controller.ChangeState<SelectItem>();
@@ -85,24 +88,41 @@ public class SelectMove : BattleState{
     }
 
     // Use this for initialization
-    void Start () {
-	
-	}
-	
-	// Update is called once per frame
-	void Update () {
-       
-        
-	
-	}
+    void Start()
+    {
+
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+
+
+
+    }
 
 
     void UpdateOption()
     {
         ui.cursor.rectTransform.anchoredPosition = new Vector2(.5f, -1 - (53 * option));
         Option = sOption[option];
-        
+        switch (Option)
+        {
+            case "Attack":
+                ui.Description.text = "Use your basic attacking ability! \n Attack Type: " + Player.Instance.basicattack.Type + "\n Damage: " + Player.Instance.basicattack.Damage;
+                break;
+            case "Skill":
+                ui.Description.text = "Use one of your Acquired Skills!";
+                break;
+            case "Item":
+                ui.Description.text = "Use an Item in your inventory! [Unimplemented]";
+                break;
+            case "Run":
+                ui.Description.text = "Attempt to flee from the battle! \n Warning: Failing to flee will result in a loss of your turn!";
+                break;
+        }
 
-        
+
+
     }
 }

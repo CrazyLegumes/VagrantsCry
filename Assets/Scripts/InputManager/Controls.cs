@@ -73,6 +73,7 @@ public class Controls : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        Debug.Log(Player.Instance.Stats.Health);
         Debug.Log(Game.Instance.state);
 
 

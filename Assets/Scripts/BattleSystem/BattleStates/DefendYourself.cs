@@ -25,11 +25,15 @@ public class DefendYourself : BattleState
     public override void Exit()
     {
         base.Exit();
+        if (buttonUi != null)
+            buttonUi.SetActive(false);
+        buttonUi = null;
     }
 
     IEnumerator Init()
     {
         yield return null;
+        yield return new WaitForSeconds(1f);
         attacker.attacked = true;
         dmg = 0;
         timer = 0;
@@ -41,11 +45,11 @@ public class DefendYourself : BattleState
         {
             case attacktype.Time:
                 StartCoroutine(Dodge());
-                break;
+               yield break;
 
             case attacktype.Spam:
                 StartCoroutine(Reflect());
-                break;
+                yield break;
         }
 
 
@@ -57,6 +61,7 @@ public class DefendYourself : BattleState
     IEnumerator Dodge()
     {
         canpress = true;
+        timer = 0;
         yield return null;
         switch (Selected)
         {
@@ -81,13 +86,16 @@ public class DefendYourself : BattleState
         }
         while (canpress)
         {
+            yield return null;
             timer += Time.deltaTime;
             if (!pressed && timer > TimeReq + (used.Bound * 3.5f))
             {
                 dmg = used.Damage;
                 Player.Instance.DamageMe(dmg);
-                Debug.Log("Hit for " + dmg + " damage");
+                attacker.attacked = true;
+
                 controller.ChangeState<PlayerCheck>();
+                yield break;
             }
             if (pressed)
                 break;
@@ -111,6 +119,7 @@ public class DefendYourself : BattleState
 
     protected override void Fire1()
     {
+        pressed = true;
         if (Selected != option[0])
         {
             dmg = used.Damage;
@@ -129,6 +138,7 @@ public class DefendYourself : BattleState
     }
     protected override void Fire2()
     {
+        pressed = true;
         if (Selected != option[1])
         {
             dmg = used.Damage;
@@ -147,6 +157,7 @@ public class DefendYourself : BattleState
     }
     protected override void Fire3()
     {
+        pressed = true;
         if (Selected != option[2])
         {
             dmg = used.Damage;

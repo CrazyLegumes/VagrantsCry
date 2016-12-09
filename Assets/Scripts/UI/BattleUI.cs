@@ -11,11 +11,18 @@ public class BattleUI : MonoBehaviour {
     public Text HPText;
     public Text MPText;
     public GameObject SkillTab;
+    public Text Description;
+    public Image DescriptionBox;
 
     public void EnableInfo()
     {
         
         Info.gameObject.SetActive(true);
+    }
+
+    public void EnableDesc()
+    {
+        DescriptionBox.gameObject.SetActive(true);
     }
 
     public void EnableSelect()
@@ -42,6 +49,11 @@ public class BattleUI : MonoBehaviour {
 
     }
 
+    public void DisableDesc()
+    {
+        DescriptionBox.gameObject.SetActive(false);
+    }
+
 
     public void DisableSkill()
     {
@@ -52,6 +64,7 @@ public class BattleUI : MonoBehaviour {
         DisableInfo();
         DisableSelect();
         DisableSkill();
+        DisableDesc();
 	}
 	
 	// Update is called once per frame

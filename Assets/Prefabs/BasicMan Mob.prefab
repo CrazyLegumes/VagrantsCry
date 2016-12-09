@@ -47,7 +47,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1000014004742432
 GameObject:
   m_ObjectHideFlags: 0
@@ -211,7 +211,9 @@ MonoBehaviour:
   Owner: {fileID: 114000012505192898, guid: 792f10b9f9582644e8f8fdb3eca4059b, type: 2}
   owner: {fileID: 1000010693431660, guid: 792f10b9f9582644e8f8fdb3eca4059b, type: 2}
   cursor: {fileID: 114000010252113836}
+  damage: {fileID: 114000011310663544, guid: 792f10b9f9582644e8f8fdb3eca4059b, type: 2}
   dead: 0
+  attacked: 0
 --- !u!135 &135000011418287720
 SphereCollider:
   m_ObjectHideFlags: 1
