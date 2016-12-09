@@ -14,6 +14,7 @@ public class InitBattle : BattleState {
         for (int i = 0; i < enemies.Count; i++)
         {
             enemies[i].transform.position = enemyspawn[i].position;
+            enemies[i].GetComponent<Mob>().Init();
             Debug.Log("Doot");
             yield return null;
 

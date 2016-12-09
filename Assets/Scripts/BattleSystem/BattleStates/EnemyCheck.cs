@@ -31,6 +31,7 @@ public class EnemyCheck : BattleState
             {
                 obj.GetComponent<Mob>().Fade();
                 yield return new WaitForSeconds(1);
+                expgain += obj.GetComponent<Mob>().expgiven;
                 enemies[i].SetActive(false);
                 enemies.Remove(enemies[i]);
 
@@ -40,6 +41,7 @@ public class EnemyCheck : BattleState
             if (enemies.Count == 0)
             {
                 Debug.Log("All Enemies Are Dead");
+                controller.ChangeState<Win>();
                 yield break;
             }
             else

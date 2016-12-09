@@ -64,6 +64,7 @@ public class Player
         Stats.Speed += (int)(Stats.Speed * 1.5);
         Stats.MaxMana += Stats.Level * 3;
         Stats.Luck += Random.Range(1, 4);
+        Stats.MaxExperience += Stats.Level * 100;
 
     }
 

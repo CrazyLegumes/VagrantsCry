@@ -22,6 +22,7 @@ public class SelectTarget : BattleState
         option = 0;
         canselect = false;
         StartCoroutine(DeInit());
+        ui.Description.text = "";   
     }
 
 

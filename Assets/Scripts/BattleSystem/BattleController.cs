@@ -11,10 +11,14 @@ public class BattleController : StateMachine {
     public Skills selectedattack;
     public Mob target;
     public Mob attacker;
+    public int expgain;
+    public GameObject origenemy;
 
 
    public void Init(GameObject obj)
     {
+        origenemy = obj;
+        expgain = 0;
         List<GameObject> enemymobs = obj.GetComponent<BaseEnemy>().Mobs;
         obj.SetActive(false);
         CreateChar.StorePlayerInfo();

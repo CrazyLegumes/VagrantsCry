@@ -17,6 +17,7 @@ public class Mob : MonoBehaviour {
     public bool dead;
     public bool attacked;
     private List<Skills> skills = new List<Skills>();
+    public int expgiven;
     
 
 
@@ -28,6 +29,8 @@ public class Mob : MonoBehaviour {
         cursor.gameObject.SetActive(false);
         attacked = false;
         dead = false;
+        gameObject.GetComponent<Renderer>().material.color = Color.white;
+
         mobstats = new BaseStats();
         
         CopyStats();
@@ -47,6 +50,7 @@ public class Mob : MonoBehaviour {
         mobstats.Level = Owner.Stats.Level;
         mobstats.Luck = Owner.Stats.Luck;
         skills = Owner.enemySkills;
+        expgiven = Owner.EXPGiven;
  
 
     }

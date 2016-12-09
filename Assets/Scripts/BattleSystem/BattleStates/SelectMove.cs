@@ -82,7 +82,7 @@ public class SelectMove : BattleState
                 break;
             case "Run":
 
-                //controller.ChangeState<RunAway>();
+                controller.ChangeState<RunAway>();
                 break;
         }
     }

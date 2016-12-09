@@ -15,6 +15,7 @@ public abstract class BattleState : State
     public Mob target { get { return controller.target; } set { controller.target = value; } }
     public Skills selected { get { return controller.selectedattack; } set { controller.selectedattack = value; } }
     public Mob attacker { get { return controller.attacker; } set { controller.attacker = value; } }
+    public int expgain { get { return controller.expgain; } set { controller.expgain = value; } }
 
 
 
