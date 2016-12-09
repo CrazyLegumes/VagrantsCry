@@ -36,8 +36,8 @@ public class EnemyPool : MonoBehaviour {
             for (int j = 0; j < enemiestopool; j++)
             {
                 GameObject obj = Instantiate(EnemyTypes[i]);
-                obj.GetComponent<Mob>().Init();
-                obj.name = obj.GetComponent<Mob>().Owner.Name;
+                obj.GetComponent<Mob>().Owner.Init();
+                obj.name = obj.GetComponent<Mob>().Owner.Name + j;
                 Debug.Log(obj.GetComponent<Mob>().Owner.ID);
                 obj.SetActive(false);
                 obj.transform.parent = emptyparent.transform;

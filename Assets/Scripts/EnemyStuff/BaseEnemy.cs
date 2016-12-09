@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.UI;
+using DG.Tweening;
 
 [System.Serializable]
 public class BaseEnemy : MonoBehaviour
@@ -11,7 +12,7 @@ public class BaseEnemy : MonoBehaviour
     private int id;
 
     [SerializeField]
-    private Image cursor;
+    private Text damage;
    
     [System.NonSerialized]
     private BaseStats stats = new BaseStats();
@@ -33,12 +34,20 @@ public class BaseEnemy : MonoBehaviour
 
     }
 
-    public virtual void Init() { }
+    public virtual void Init() {
+        damage.gameObject.SetActive(false);
+        for(int i = 0; i < mobs.Count; i++)
+        {
+            if (mobs != null)
+                mobs[i].GetComponent<Mob>().Init();
+        }
 
-    public Image Cursor
+    }
+
+    public Text Damage
     {
-        get { return cursor; }
-        set { cursor = value; }
+        get { return damage; }
+        set { damage = value; }
     }
 
     public int ID
@@ -86,20 +95,8 @@ public class BaseEnemy : MonoBehaviour
     }
 
 
-    public void HealMe(int health)
-    {
-        stats.Health += health;
-        if (stats.Health > stats.MaxHealth)
-            stats.Health = stats.MaxHealth;
-    }
-
-
-    public void DamageMe(int dmg)
-    {
-        stats.Health -= dmg;
-        if (stats.Health < 0)
-            stats.Health = 0;
-    }
+    
+    
 
 
 

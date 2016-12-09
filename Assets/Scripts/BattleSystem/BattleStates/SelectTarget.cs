@@ -28,7 +28,7 @@ public class SelectTarget : BattleState
 
     IEnumerator Init()
     {
-
+        ui.DisableSelect();
         yield return null;
         option = 0;
 
@@ -81,6 +81,7 @@ public class SelectTarget : BattleState
     protected override void Fire2()
     {
         base.Fire2();
+        target.cursor.gameObject.SetActive(false);
         controller.ChangeState<SelectMove>();
     }
 
@@ -95,7 +96,7 @@ public class SelectTarget : BattleState
                 controller.ChangeState<ExecuteTimedAttack>();
                 break;
             case attacktype.Spam:
-                //controller.ChangeState<ExecuteSpamAtack>();
+                controller.ChangeState<ExecuteSpamAttack>();
                 break;
             case attacktype.Hold:
                 //controller.ChangeState<ExecuteHoldAttack>();
@@ -106,7 +107,7 @@ public class SelectTarget : BattleState
 
     void UpdateTarget()
     {
-        target = enemies[option].GetComponent<Mob>().Owner;
+        target = enemies[option].GetComponent<Mob>();
 
     }
 

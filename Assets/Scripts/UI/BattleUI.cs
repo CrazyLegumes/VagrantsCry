@@ -10,6 +10,7 @@ public class BattleUI : MonoBehaviour {
     public Slider MP;
     public Text HPText;
     public Text MPText;
+    public GameObject SkillTab;
 
     public void EnableInfo()
     {
@@ -32,10 +33,25 @@ public class BattleUI : MonoBehaviour {
     {
         SelectUI.SetActive(false);
     }
+
+
+    public void EnableSkill()
+    {
+        if (SelectUI.activeInHierarchy)
+            SkillTab.SetActive(true);
+
+    }
+
+
+    public void DisableSkill()
+    {
+        SkillTab.SetActive(false);
+    }
 	// Use this for initialization
 	void Start () {
         DisableInfo();
         DisableSelect();
+        DisableSkill();
 	}
 	
 	// Update is called once per frame

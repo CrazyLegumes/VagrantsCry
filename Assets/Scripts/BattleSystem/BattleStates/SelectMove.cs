@@ -24,7 +24,10 @@ public class SelectMove : BattleState{
     IEnumerator Init()
     {
         yield return null;
+        option = 0;
         ui.EnableSelect();
+        UpdateOption();
+        yield return new WaitForSeconds(.5f);
         canselect = true;
         
 
@@ -34,7 +37,7 @@ public class SelectMove : BattleState{
     {
         yield return null;
         canselect = false;
-        ui.DisableSelect();
+        
     }
 
 
@@ -45,6 +48,7 @@ public class SelectMove : BattleState{
             option--;
         if (option < 0)
             option = 3;
+        UpdateOption();
     }
 
     protected override void ShiftDown()
@@ -54,6 +58,7 @@ public class SelectMove : BattleState{
             option++;
         if (option > 3)
             option = 0;
+        UpdateOption();
     }
 
 
@@ -67,7 +72,7 @@ public class SelectMove : BattleState{
                 selected = Player.Instance.basicattack;
                 break;
             case "Skill":
-                //controller.ChangeState<SelectSkill>();
+                controller.ChangeState<SelectSkill>();
                 break;
             case "Item":
                 //controller.ChangeState<SelectItem>();
@@ -86,7 +91,7 @@ public class SelectMove : BattleState{
 	
 	// Update is called once per frame
 	void Update () {
-        UpdateOption();
+       
         
 	
 	}

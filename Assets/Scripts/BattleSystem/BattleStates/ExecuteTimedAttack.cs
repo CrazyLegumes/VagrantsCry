@@ -28,6 +28,7 @@ public class ExecuteTimedAttack : BattleState
         }
         buttonUi = null;
         timer = 0;
+        
        
     }
 
@@ -81,7 +82,7 @@ public class ExecuteTimedAttack : BattleState
                 yield break;
             }
             if (pressed)
-                yield break;
+                break;
 
         }
 
@@ -105,9 +106,6 @@ public class ExecuteTimedAttack : BattleState
         {
             DamageCalculation();
         }
-
-
-
 
     }
 
@@ -173,11 +171,12 @@ public class ExecuteTimedAttack : BattleState
         {
             dmg = selected.Damage / 2;
         }
-        dmg -= target.Stats.Defense;
+        dmg -= target.mobstats.Defense;
         if (dmg < 1)
             dmg = 1;
         target.DamageMe(dmg);
-        Debug.Log("Did " + dmg + " to " + target.Name);
+        Debug.Log("Did " + dmg + " to " + target.Owner.Name);
+        Debug.Log(target.mobstats.Health);
         controller.ChangeState<SelectMove>();
 
     }

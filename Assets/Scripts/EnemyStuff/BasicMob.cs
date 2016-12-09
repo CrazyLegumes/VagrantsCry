@@ -20,6 +20,7 @@ public class BasicMob : BaseEnemy
 
     public override void Init()
     {
+        
         me = GetComponent<BasicMob>();
         me.Name = "Mobu";
         me.ID = 1001;
@@ -33,6 +34,7 @@ public class BasicMob : BaseEnemy
         me.Stats.Speed = 0;
         me.Stats.Luck = 0;
         me.EXPGiven = 20;
+        base.Init();
 
     }
     // Use this for initialization
