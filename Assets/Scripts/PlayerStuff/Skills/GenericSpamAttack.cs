@@ -15,7 +15,7 @@ public class GenericSpamAttack : Skills {
         Type = attacktype.Spam;
         Desc = "A Generic flurry of attacks! Press the indicated key as fast as possible!";
         Timer = 1;
-        Damage = Player.Instance.Stats.Strength / 2;
+        Damage = Player.instance.Stats.Strength / 2;
 
     }
     

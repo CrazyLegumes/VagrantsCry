@@ -20,9 +20,13 @@ public enum GameState
 
 
 [System.Serializable]
-public class Game
+public class Game : StateMachine
 {
-    private static Game instance = new Game();
+
+    public MMController mainmenu;
+    public BattleController battle;
+
+   
 
 
     private Game()
@@ -31,15 +35,19 @@ public class Game
     }
 
 
-    public static Game Instance
-    {
-        get
-        {
-            if (instance == null)
-                instance = new Game();
+    public static Game instance;
 
-            return instance;
+
+   void Awake()
+    {
+        if (instance == null)
+        {
+            instance = this;
         }
+        else if (instance != this)
+            Destroy(gameObject);
+
+        DontDestroyOnLoad(gameObject);
     }
 
     public static IEnumerator LoadScene(int scene, LoadSceneMode mode = LoadSceneMode.Single)

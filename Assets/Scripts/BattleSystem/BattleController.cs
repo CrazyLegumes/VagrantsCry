@@ -26,7 +26,6 @@ public class BattleController : StateMachine {
         for(int i = 0; i < enemymobs.Count; i++)
         {
             enemies.Add(EnemyPool.current.GetEnemies(enemymobs[i].GetComponent<Mob>().Owner.ID));
-           
         }
         UI = FindObjectOfType<BattleUI>();
 
@@ -42,6 +41,6 @@ public class BattleController : StateMachine {
 	
 	// Update is called once per frame
 	void Update () {
-        Debug.Log(CurrentState);
+
 	}
 }

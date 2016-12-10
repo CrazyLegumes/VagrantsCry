@@ -15,7 +15,7 @@ public class BasicAttack : Skills
         Type = attacktype.Time;
         Desc = "Your Basic attack! Time it right for extra damage";
         Timer = 1;
-        Damage = Player.Instance.Stats.Strength;
+        Damage = Player.instance.Stats.Strength;
         Bound = .05f;
     }
 

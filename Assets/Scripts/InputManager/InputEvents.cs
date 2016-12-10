@@ -6,7 +6,8 @@ using System.Collections.Generic;
 public enum InputPhase
 {
     ButtonDown,
-    ButtonUp
+    ButtonUp,
+    ButtonHold
 }
 
 public delegate void InputDelegate();
@@ -31,6 +32,12 @@ public class KeyEvent: InputEvent
 
 
 public class InputEvents : MonoBehaviour {
+
+
+    void Awake()
+    {
+        DontDestroyOnLoad(gameObject);
+    }
 
     public static List<KeyEvent> keyEventList;
 
@@ -111,6 +118,8 @@ public class InputEvents : MonoBehaviour {
                     case InputPhase.ButtonDown: shouldcall = (InputTracker.HasPressedKey(e.key)); break;
 
                     case InputPhase.ButtonUp: shouldcall = (InputTracker.HasReleasedKey(e.key)); break;
+
+                    case InputPhase.ButtonHold: shouldcall = (InputTracker.IsHoldingKey(e.key)); break;
                 }
                 if (shouldcall)
                     e.ExecutMethod();
@@ -133,6 +142,11 @@ public class InputTracker
     public static bool HasReleasedKey(KeyCode key)
     {
         return Input.GetKeyUp(key);
+    }
+
+    public static bool IsHoldingKey(KeyCode key)
+    {
+        return Input.GetKey(key);
     }
 
 }

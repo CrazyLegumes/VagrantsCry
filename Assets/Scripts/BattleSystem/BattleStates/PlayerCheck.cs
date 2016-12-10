@@ -15,7 +15,7 @@ public class PlayerCheck : BattleState
     IEnumerator Init()
     {
         bool myturn = true;
-        if (Player.Instance.Stats.Health == 0)
+        if (Player.instance.Stats.Health == 0)
         {
             Debug.Log("Player is Dead");
             yield break;

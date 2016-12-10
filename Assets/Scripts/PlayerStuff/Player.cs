@@ -5,20 +5,20 @@ using System.Collections.Generic;
 [System.Serializable]
 public class Player
 {
-    private static Player instance;
+    private static Player Instance;
     private string pname;
     private BaseStats stats;
     public Skills basicattack = new BasicAttack();
     public Skills selected;
     private List<Skills> skills = new List<Skills>();
 
-    public static Player Instance
+    public static Player instance
     {
         get
         {
-            if (instance == null)
-                instance = new Player();
-            return instance;
+            if (Instance == null)
+                Instance = new Player();
+            return Instance;
         }
     }
     

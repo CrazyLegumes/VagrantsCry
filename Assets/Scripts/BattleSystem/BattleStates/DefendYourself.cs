@@ -91,7 +91,7 @@ public class DefendYourself : BattleState
             if (!pressed && timer > TimeReq + (used.Bound * 3.5f))
             {
                 dmg = used.Damage;
-                Player.Instance.DamageMe(dmg);
+                Player.instance.DamageMe(dmg);
                 attacker.attacked = true;
 
                 controller.ChangeState<PlayerCheck>();
@@ -123,7 +123,7 @@ public class DefendYourself : BattleState
         if (Selected != option[0])
         {
             dmg = used.Damage;
-            Player.Instance.DamageMe(dmg);
+            Player.instance.DamageMe(dmg);
             Debug.Log("Hit for " + dmg + " damage");
             controller.ChangeState<PlayerCheck>();
         }
@@ -142,7 +142,7 @@ public class DefendYourself : BattleState
         if (Selected != option[1])
         {
             dmg = used.Damage;
-            Player.Instance.DamageMe(dmg);
+            Player.instance.DamageMe(dmg);
             Debug.Log("Hit for " + dmg + " damage");
             controller.ChangeState<PlayerCheck>();
         }
@@ -161,7 +161,7 @@ public class DefendYourself : BattleState
         if (Selected != option[2])
         {
             dmg = used.Damage;
-            Player.Instance.DamageMe(dmg);
+            Player.instance.DamageMe(dmg);
             Debug.Log("Hit for " + dmg + " damage");
             controller.ChangeState<PlayerCheck>();
         }
@@ -194,13 +194,13 @@ public class DefendYourself : BattleState
         //Blocked
         if (timer < TimeReq - (selected.Bound * 2) || timer > TimeReq + (selected.Bound * 2))
         {
-            dmg = used.Damage - Player.Instance.Stats.Defense;
+            dmg = used.Damage - Player.instance.Stats.Defense;
         }
 
         //Partial Block
         if (timer < TimeReq - (selected.Bound * 3) || timer > TimeReq + (selected.Bound * 3))
         {
-            dmg = used.Damage - Player.Instance.Stats.Defense / 2;
+            dmg = used.Damage - Player.instance.Stats.Defense / 2;
 
         }
 
@@ -208,9 +208,9 @@ public class DefendYourself : BattleState
             dmg = 0;
 
 
-        Player.Instance.DamageMe(dmg);
+        Player.instance.DamageMe(dmg);
 
-        Debug.Log("Did " + dmg + " to " + Player.Instance.Name);
+        Debug.Log("Did " + dmg + " to " + Player.instance.Name);
 
         controller.ChangeState<PlayerCheck>();
     }

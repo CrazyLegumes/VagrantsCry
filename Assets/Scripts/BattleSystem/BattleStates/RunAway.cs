@@ -16,7 +16,7 @@ public class RunAway : BattleState{
         bool canescape = true;
         for (int i = 0; i < enemies.Count; i++)
         {
-            if (enemies[i].GetComponent<Mob>().mobstats.Speed > Player.Instance.Stats.Speed)
+            if (enemies[i].GetComponent<Mob>().mobstats.Speed > Player.instance.Stats.Speed)
             {
                 canescape = false;
                 break;

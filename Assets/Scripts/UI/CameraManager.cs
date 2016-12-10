@@ -29,7 +29,7 @@ public class CameraManager : MonoBehaviour
 
     void LateUpdate()
     {
-        switch (Game.Instance.state)
+        switch (Game.instance.state)
         {
             case GameState.InWorld:
                 WorldCamera();

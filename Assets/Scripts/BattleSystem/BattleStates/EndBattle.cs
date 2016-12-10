@@ -13,7 +13,7 @@ public class EndBattle : BattleState {
     {
         yield return null;
         CreateChar.StorePlayerInfo();
-        Game.Instance.state = GameState.InWorld;
+        Game.instance.state = GameState.InWorld;
         controller.CurrentState = null;
         ui.DisableDesc();
         ui.DisableInfo();
@@ -31,7 +31,7 @@ public class EndBattle : BattleState {
             controller.origenemy.SetActive(true);
            
         }
-        GameObject.Find("Player").transform.position = Game.Instance.position - new Vector3(3,0,0);
+        GameObject.Find("Player").transform.position = Game.instance.position - new Vector3(3,0,0);
         yield break;
     }
 

@@ -27,7 +27,7 @@ public class SelectSkill :BattleState {
         option = 0;
         canselect = true;
         ui.EnableSkill();
-        available = Player.Instance.Skills;
+        available = Player.instance.Skills;
         UpdateOption();
         ui.cursor.rectTransform.localScale = new Vector3(1.5f, 1, 1);
         yield return null;

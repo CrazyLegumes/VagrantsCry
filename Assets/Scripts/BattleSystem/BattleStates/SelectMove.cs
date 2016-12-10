@@ -70,7 +70,7 @@ public class SelectMove : BattleState
         {
             case "Attack":
                 controller.ChangeState<SelectTarget>();
-                selected = Player.Instance.basicattack;
+                selected = Player.instance.basicattack;
 
                 break;
             case "Skill":
@@ -109,7 +109,7 @@ public class SelectMove : BattleState
         switch (Option)
         {
             case "Attack":
-                ui.Description.text = "Use your basic attacking ability! \n Attack Type: " + Player.Instance.basicattack.Type + "\n Damage: " + Player.Instance.basicattack.Damage;
+                ui.Description.text = "Use your basic attacking ability! \n Attack Type: " + Player.instance.basicattack.Type + "\n Damage: " + Player.instance.basicattack.Damage;
                 break;
             case "Skill":
                 ui.Description.text = "Use one of your Acquired Skills!";

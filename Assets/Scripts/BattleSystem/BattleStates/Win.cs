@@ -14,8 +14,8 @@ public class Win : BattleState {
     IEnumerator Init()
     {
         yield return null;
-        Player.Instance.Stats.Experience += expgain;
-        Player.Instance.CheckLevelUp();
+        Player.instance.Stats.Experience += expgain;
+        Player.instance.CheckLevelUp();
         controller.ChangeState<EndBattle>();
     }
 

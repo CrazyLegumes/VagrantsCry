@@ -35,7 +35,7 @@ public class Controls : MonoBehaviour
     void Awake()
     {
         DontDestroyOnLoad(transform.gameObject);
-        Game.Instance.state = GameState.MainMenu;
+        Game.instance.state = GameState.MainMenu;
         
     }
 
@@ -43,7 +43,7 @@ public class Controls : MonoBehaviour
 
     void Init()
     {
-        switch (Game.Instance.state)
+        switch (Game.instance.state)
         {
 
             case GameState.InWorld:
@@ -73,8 +73,8 @@ public class Controls : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(Player.Instance.Stats.Health);
-        Debug.Log(Game.Instance.state);
+        Debug.Log(Player.instance.Stats.Health);
+        Debug.Log(Game.instance.state);
 
 
         if (settings.body != null)
@@ -85,7 +85,7 @@ public class Controls : MonoBehaviour
             }
 
         }
-        switch (Game.Instance.state)
+        switch (Game.instance.state)
         {
 
             case GameState.MainMenu:
@@ -116,14 +116,14 @@ public class Controls : MonoBehaviour
     private void Pause()
     {
 
-        if (Game.Instance.state == GameState.InWorld)
+        if (Game.instance.state == GameState.InWorld)
         {
-            Game.Instance.state = GameState.Pause;
+            Game.instance.state = GameState.Pause;
             Time.timeScale = 0f;
         }
         else
         {
-            Game.Instance.state = GameState.InWorld;
+            Game.instance.state = GameState.InWorld;
             Time.timeScale = 1f;
         }
     }
@@ -202,7 +202,7 @@ public class Controls : MonoBehaviour
                         StartCoroutine(mainmenu.FadeOutTitle());
                         CreateChar.Init();
                         SceneManager.sceneLoaded += SceneManager_sceneLoaded;
-                        Game.Instance.state = GameState.InWorld;
+                        Game.instance.state = GameState.InWorld;
                         mainmenu.select.Play();
                         break;
 

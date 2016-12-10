@@ -13,6 +13,6 @@ public class GenericHoldAttack : Skills {
         Type = attacktype.Hold;
         Desc = "A generic charged attack! Hold the indicated key until you see ! for maximum damage";
         Timer = 2;
-        Damage = Mathf.CeilToInt(Player.Instance.Stats.Strength * 1.5f);
+        Damage = Mathf.CeilToInt(Player.instance.Stats.Strength * 1.5f);
     }
 }

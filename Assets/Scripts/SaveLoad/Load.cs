@@ -19,18 +19,18 @@ public class Load : MonoBehaviour
             BinaryFormatter bf = new BinaryFormatter();
             FileStream file = File.Open(Application.persistentDataPath + "/playerInfo.dat", FileMode.Open);
            
-            Game.Instance.PlayerName = (string)bf.Deserialize(file);
-            Game.Instance.PlayerLevel = (int) bf.Deserialize(file);
-            Game.Instance.Health = (int) bf.Deserialize(file);
-            Game.Instance.MaxHealth = (int) bf.Deserialize(file);
-            Game.Instance.Mana = (int) bf.Deserialize(file);
-            Game.Instance.MaxMana = (int) bf.Deserialize(file);
-            Game.Instance.Strength = (int)bf.Deserialize(file);
-            Game.Instance.Defense = (int) bf.Deserialize(file);
-            Game.Instance.Speed = (int) bf.Deserialize(file);
-            Game.Instance.Luck = (int) bf.Deserialize(file);
-            Game.Instance.Experience = (int) bf.Deserialize(file);
-            Game.Instance.MaxExperience = (int) bf.Deserialize(file);
+            Game.instance.PlayerName = (string)bf.Deserialize(file);
+            Game.instance.PlayerLevel = (int) bf.Deserialize(file);
+            Game.instance.Health = (int) bf.Deserialize(file);
+            Game.instance.MaxHealth = (int) bf.Deserialize(file);
+            Game.instance.Mana = (int) bf.Deserialize(file);
+            Game.instance.MaxMana = (int) bf.Deserialize(file);
+            Game.instance.Strength = (int)bf.Deserialize(file);
+            Game.instance.Defense = (int) bf.Deserialize(file);
+            Game.instance.Speed = (int) bf.Deserialize(file);
+            Game.instance.Luck = (int) bf.Deserialize(file);
+            Game.instance.Experience = (int) bf.Deserialize(file);
+            Game.instance.MaxExperience = (int) bf.Deserialize(file);
             file.Close();
 
 

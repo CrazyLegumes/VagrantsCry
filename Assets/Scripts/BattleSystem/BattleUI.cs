@@ -74,12 +74,12 @@ public class BattleUI : MonoBehaviour {
 
     void UpdateStats()
     {
-        HPText.text = "HP: " + Player.Instance.Stats.Health + "/" + Player.Instance.Stats.MaxHealth;
-        MPText.text = "MP: " + Player.Instance.Stats.Mana + "/" + Player.Instance.Stats.MaxMana;
-        HP.maxValue = Player.Instance.Stats.MaxHealth;
-        HP.value = Mathf.Lerp(HP.value, Player.Instance.Stats.Health, 1);
-        MP.maxValue = Player.Instance.Stats.MaxMana;
-        MP.value = Mathf.Lerp(MP.value, Player.Instance.Stats.Mana, 10);
+        HPText.text = "HP: " + Player.instance.Stats.Health + "/" + Player.instance.Stats.MaxHealth;
+        MPText.text = "MP: " + Player.instance.Stats.Mana + "/" + Player.instance.Stats.MaxMana;
+        HP.maxValue = Player.instance.Stats.MaxHealth;
+        HP.value = Mathf.Lerp(HP.value, Player.instance.Stats.Health, 1);
+        MP.maxValue = Player.instance.Stats.MaxMana;
+        MP.value = Mathf.Lerp(MP.value, Player.instance.Stats.Mana, 10);
 
 
     }
