@@ -13,7 +13,7 @@ public class EndBattle : BattleState {
     {
         yield return null;
         CreateChar.StorePlayerInfo();
-        Game.instance.state = GameState.InWorld;
+       
         controller.CurrentState = null;
         ui.DisableDesc();
         ui.DisableInfo();

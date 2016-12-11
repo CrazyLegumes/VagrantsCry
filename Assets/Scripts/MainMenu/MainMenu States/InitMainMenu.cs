@@ -15,6 +15,7 @@ public class InitMainMenu : MainMenuState
 
     IEnumerator Init()
     {
+        yield return new WaitForSeconds(.1f);
         ui.EnableUI();
         canselect = false;
         ui.Title.DOColor(Color.white, 3);

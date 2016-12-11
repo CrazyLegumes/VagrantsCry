@@ -23,7 +23,7 @@ public class InitBattle : BattleState {
         }
         Game.instance.position = GameObject.Find("Player").transform.position;
         GameObject.Find("Player").transform.position = playerspawn.position;
-        Game.instance.state = GameState.InBattle;
+        
         ui.EnableInfo();
         ui.EnableDesc();
         controller.ChangeState<SelectMove>();

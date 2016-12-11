@@ -29,16 +29,8 @@ public class CameraManager : MonoBehaviour
 
     void LateUpdate()
     {
-        switch (Game.instance.state)
-        {
-            case GameState.InWorld:
-                WorldCamera();
-                break;
-
-            case GameState.InBattle:
-                BattleCamera();
-                break;
-        }
+       
+          
         
 
     }

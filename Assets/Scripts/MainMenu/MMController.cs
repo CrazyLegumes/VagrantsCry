@@ -8,14 +8,15 @@ public class MMController : StateMachine {
     
     public void Init()
     {
-        UI = FindObjectOfType<MainMenuUI>();
+
         UI.Init();
         ChangeState<InitMainMenu>();
     }
 
     void Awake()
     {
-        Init();
+
+       
     }
 	// Use this for initialization
 	void Start () {

@@ -29,7 +29,8 @@ public class SelectMode : MainMenuState
         yield return new WaitForSeconds(2f);
         Camera.main.GetComponent<AudioListener>().enabled = false;
         yield return StartCoroutine(Game.LoadScene(1, LoadSceneMode.Additive));
-        Game.instance.state = GameState.InWorld;
+        Game.instance.ChangeState<InGame>();
+        CreateChar.Init();
         yield return new WaitForEndOfFrame();
         StartCoroutine(Game.UnloadScene(0));
     }

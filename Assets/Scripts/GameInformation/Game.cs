@@ -4,17 +4,15 @@ using System.Collections.Generic;
 using UnityEngine.SceneManagement;
 
 
-public enum GameState
+class PlayerSettings
 {
+    public CharacterController body;
+    public bool canmove;
+    public Vector3 inp = Vector3.zero;
+    public const float gravity = 30f;
+    public float movespeed = 5f;
+    public float jumpheight = 10f;
 
-
-    //Game states that I want
-    MainMenu,
-    Pause,
-    InWorld,
-    InBattle,
-    GameOver,
-    Credits
 
 }
 
@@ -25,6 +23,7 @@ public class Game : StateMachine
 
     public MMController mainmenu;
     public BattleController battle;
+    public GameObject player;
 
    
 
@@ -48,6 +47,7 @@ public class Game : StateMachine
             Destroy(gameObject);
 
         DontDestroyOnLoad(gameObject);
+        instance.ChangeState<InMainMenu>();
     }
 
     public static IEnumerator LoadScene(int scene, LoadSceneMode mode = LoadSceneMode.Single)
@@ -88,6 +88,10 @@ public class Game : StateMachine
     public bool isPaused { get; set; }
     public List<Skills> Skills { get; set; }
 
+    void Update()
+    {
+        Debug.Log(CurrentState);
+    }
 
 
 
